@@ -106,7 +106,15 @@ export default function HomePage() {
       <SiteHeader variant="reservations" />
       <main className="flex-1">
         {/* Hero */}
-        <section className="bg-coast-900 text-sand">
+        <section
+          className="relative isolate overflow-hidden bg-coast-900 text-sand"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(26,58,92,0.78), rgba(42,77,110,0.72)), url('https://adventuresbythesea.com/wp-content/uploads/sites/1900/2018/11/Cannery-Row.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
           <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
             <p className="text-xs uppercase tracking-widest text-sand/70">
               {CLIENT_PROFILE.brand.alternateName} · bookadventuresbythesea.com
