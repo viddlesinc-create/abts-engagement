@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { CLIENT_PROFILE } from '@/lib/client-profile';
 
 type Variant = 'reservations' | 'sales';
@@ -15,9 +16,20 @@ export function SiteHeader({ variant = 'reservations' }: { variant?: Variant }) 
 
   return (
     <header className="bg-coast-900 text-sand">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-display text-xl tracking-tight">
-          {CLIENT_PROFILE.brand.name}
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-3">
+        <Link
+          href="/"
+          aria-label={`${CLIENT_PROFILE.brand.name} — home`}
+          className="block"
+        >
+          <Image
+            src={CLIENT_PROFILE.brand.logoUrl}
+            alt={`${CLIENT_PROFILE.brand.name} logo`}
+            width={596}
+            height={245}
+            priority
+            className="h-12 w-auto md:h-14"
+          />
         </Link>
         <a
           href={`tel:${phone}`}

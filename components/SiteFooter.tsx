@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { CLIENT_PROFILE } from '@/lib/client-profile';
 
 type Variant = 'reservations' | 'sales';
@@ -28,8 +29,14 @@ export function SiteFooter({ variant = 'reservations' }: { variant?: Variant }) 
       <div className="mx-auto max-w-5xl px-6 py-10 text-sm text-ink/70">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <p className="font-display text-lg text-ink">{CLIENT_PROFILE.brand.name}</p>
-            <p className="mt-2">
+            <Image
+              src={CLIENT_PROFILE.brand.logoUrl}
+              alt={`${CLIENT_PROFILE.brand.name} logo`}
+              width={596}
+              height={245}
+              className="h-12 w-auto"
+            />
+            <p className="mt-3">
               {CLIENT_PROFILE.contact.mainAddress.streetAddress}
               <br />
               {CLIENT_PROFILE.contact.mainAddress.addressLocality},{' '}
