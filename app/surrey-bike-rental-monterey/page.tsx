@@ -72,7 +72,7 @@ const DATA: PillarPageProps = {
     primaryCta: 'Reserve a Surrey →',
     primaryCtaHref: FH_BOOK,
     backgroundImage:
-      'https://adventuresbythesea.com/wp-content/uploads/sites/1900/2018/10/Surrey-Bike-Rental-image-2.jpg',
+      'https://adventuresbythesea.com/wp-content/uploads/sites/1900/2018/10/Surrey-Rental-image-1.jpg',
   },
   trustBadges: [
     '👨‍👩‍👧‍👦 All Ages Welcome',
