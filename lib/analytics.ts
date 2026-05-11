@@ -84,7 +84,7 @@ const CONVERSIONS: ReadonlyArray<{
     conversions: {
       phone: {
         kind: 'send_to',
-        label: 'mVTCCMbuwKscEMqzhdoD',
+        label: 'XOH4COvXwascEMqzhdoD',
         value: 1500,
       },
       form: {
