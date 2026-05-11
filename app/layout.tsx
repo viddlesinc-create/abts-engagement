@@ -31,6 +31,7 @@ export const viewport: Viewport = {
 };
 
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
+const GADS_ID = process.env.NEXT_PUBLIC_GADS_ID;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -46,10 +47,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={jsonLdScript(brandLocalBusinessSchema())}
         />
-        {GA4_ID ? (
+        {(GA4_ID || GADS_ID) ? (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID ?? GADS_ID}`}
               strategy="afterInteractive"
             />
             <Script id="ga-config" strategy="afterInteractive">
@@ -57,9 +58,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${GA4_ID}', {
-                  linker: { domains: ['adventuresbythesea.com', 'bookadventuresbythesea.com'] }
-                });
+                gtag('set', 'linker', { domains: ['adventuresbythesea.com', 'bookadventuresbythesea.com', 'fareharbor.com'] });
+                ${GA4_ID ? `gtag('config', '${GA4_ID}');` : ''}
+                ${GADS_ID ? `gtag('config', '${GADS_ID}');` : ''}
               `}
             </Script>
           </>
