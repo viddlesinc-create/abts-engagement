@@ -16,7 +16,7 @@ const FH_BOOK =
 
 export const metadata: Metadata = {
   title:
-    'Surrey Bike Rental Monterey | 3 & 6 Person Surreys at Portola Hotel + Cannery Row | Adventures By The Sea',
+    'Surrey Bike Rental Monterey | 3 & 6 Person Surreys at Portola Hotel + Cannery Row',
   description:
     'Rent a 3-person or 6-person surrey bike on the Monterey Peninsula. Pick up at Portola Hotel or Cannery Row. The whole family in one ride. From $77.04/hr.',
   alternates: { canonical: PAGE_PATH },

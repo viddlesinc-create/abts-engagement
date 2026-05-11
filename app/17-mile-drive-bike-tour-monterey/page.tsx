@@ -15,7 +15,7 @@ const FH_BOOK =
   'https://fareharbor.com/embeds/book/adventuresbythesea-canneryrow/items/84523/calendar/?ref=https://adventuresbythesea.com&back=https://adventuresbythesea.com/cannery-row/';
 
 export const metadata: Metadata = {
-  title: '17 Mile Drive Bike Tour Monterey | Guided E-Bike Tours | Adventures By The Sea',
+  title: '17 Mile Drive Bike Tour Monterey | Guided E-Bike Tours',
   description:
     'Guided e-bike tour of the 17 Mile Drive — Lone Cypress, Bird Rock, Pebble Beach. All hills handled by pedal-assist. Half-day tour. From $80.25/person.',
   alternates: { canonical: PAGE_PATH },

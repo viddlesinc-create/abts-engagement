@@ -16,7 +16,7 @@ const FH_BOOK =
 
 export const metadata: Metadata = {
   title:
-    'Kayak Tours Monterey Bay | Pebble Beach, Cannery Row & Lovers Point | Adventures By The Sea',
+    'Kayak Tours Monterey Bay | Pebble Beach, Cannery Row & Lovers Point',
   description:
     'Guided kayak tours launching from Pebble Beach, Cannery Row, and Lovers Point. Paddle with sea otters and harbor seals. Daily departures. From $69.55/person.',
   alternates: { canonical: PAGE_PATH },

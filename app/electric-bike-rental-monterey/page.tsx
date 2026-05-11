@@ -15,7 +15,7 @@ const FH_BOOK =
   'https://fareharbor.com/embeds/book/adventuresbythesea-canneryrow/items/84523/calendar/?ref=https://adventuresbythesea.com&back=https://adventuresbythesea.com/cannery-row/';
 
 export const metadata: Metadata = {
-  title: 'Electric Bike Rentals in Monterey | Adventures By The Sea',
+  title: 'Electric Bike Rentals in Monterey',
   description:
     'Premium e-bike rentals in Monterey — Rad Power Bikes, Blix, AIMA. Tackle the 17 Mile Drive effortlessly. From $42.80/hr. Book online.',
   alternates: { canonical: PAGE_PATH },

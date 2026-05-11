@@ -19,7 +19,7 @@ const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
 
 export const metadata: Metadata = {
   title:
-    'Corporate Group Activities & Team Building | Monterey Peninsula | Adventures by the Sea',
+    'Corporate Group Activities & Team Building | Monterey Peninsula',
   description:
     'Adventure tours, scavenger hunts, and team-building programs across Carmel, Pebble Beach, Monterey, and Pacific Grove. Trusted by Fortune 500 teams since 1987. Groups of 12–200. Request a quote today.',
   alternates: { canonical: PAGE_PATH },

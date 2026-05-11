@@ -15,7 +15,7 @@ const FH_BOOK =
   'https://fareharbor.com/embeds/book/adventuresbythesea-canneryrow/items/84523/calendar/?ref=https://adventuresbythesea.com&back=https://adventuresbythesea.com/cannery-row/';
 
 export const metadata: Metadata = {
-  title: 'Monterey Bike Rental | Adventures By The Sea',
+  title: 'Monterey Bike Rental',
   description:
     'Rent bikes in Monterey Bay by the hour or day. Beach cruisers, hybrids, and family bikes. Easy online booking. Multiple locations near Cannery Row.',
   alternates: { canonical: PAGE_PATH },
