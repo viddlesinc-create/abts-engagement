@@ -48,8 +48,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         {(GA4_ID || GADS_ID) ? (
           <>
+            {/*
+              Load gtag.js with the Google Ads (AW-) ID, not the GA4 (G-) ID.
+              Reason: brand-new GA4 properties take 24-48h to propagate to
+              Google's tag CDN; until then, gtag/js?id=G-XXXX returns HTTP 404
+              and the entire tag library fails to load. The AW- endpoint
+              serves the same gtag.js script. The GA4 property still gets
+              registered via the gtag('config', G-XXXX) call below — the ID
+              in the script src is just a CDN cache key, not a config.
+            */}
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID ?? GADS_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${GADS_ID ?? GA4_ID}`}
               strategy="afterInteractive"
             />
             <Script id="ga-config" strategy="afterInteractive">
@@ -58,8 +67,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('set', 'linker', { domains: ['adventuresbythesea.com', 'bookadventuresbythesea.com', 'fareharbor.com'] });
-                ${GA4_ID ? `gtag('config', '${GA4_ID}');` : ''}
                 ${GADS_ID ? `gtag('config', '${GADS_ID}');` : ''}
+                ${GA4_ID ? `gtag('config', '${GA4_ID}');` : ''}
               `}
             </Script>
           </>
