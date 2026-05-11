@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { CLIENT_PROFILE } from '@/lib/client-profile';
 import { brandLocalBusinessSchema, jsonLdScript } from '@/lib/schema';
+import { GA4_ID, GADS_ID } from '@/lib/analytics';
+import { ConversionTracker } from '@/components/ConversionTracker';
 import './globals.css';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bookadventuresbythesea.com';
@@ -29,9 +31,6 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: '#1a3a5c',
 };
-
-const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
-const GADS_ID = process.env.NEXT_PUBLIC_GADS_ID;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -66,7 +65,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         ) : null}
       </head>
-      <body className="min-h-screen flex flex-col">{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <ConversionTracker />
+        {children}
+      </body>
     </html>
   );
 }

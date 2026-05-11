@@ -2,15 +2,9 @@
 
 import { useState, type FormEvent } from 'react';
 import { CLIENT_PROFILE } from '@/lib/client-profile';
+import { trackConversion } from '@/lib/analytics';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-    fbq?: (...args: unknown[]) => void;
-  }
-}
 
 const inputClass =
   'w-full rounded-lg border-[1.5px] border-ink/15 bg-white px-3 py-2.5 text-sm text-ink transition-colors focus:border-coast focus:outline-none focus:ring-2 focus:ring-coast/20';
@@ -26,12 +20,17 @@ export function GroupInquiryForm() {
 
     setStatus('sending');
 
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'groups_form_submit', {
+    // Fires Google Ads conversion + GA4 groups_form_submit event.
+    // type:'form' routes to the team-building-monterey form-submit label
+    // configured in lib/analytics.ts CONVERSIONS map.
+    trackConversion({
+      type: 'form',
+      ga4Event: 'groups_form_submit',
+      ga4Params: {
         event_category: 'Group Inquiry',
         event_label: String(data.get('Activity Interest') ?? ''),
-      });
-    }
+      },
+    });
     if (typeof window.fbq === 'function') {
       window.fbq('track', 'Lead', { content_name: 'Group Quote Inquiry' });
     }
