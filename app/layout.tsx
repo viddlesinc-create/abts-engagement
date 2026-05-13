@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { CLIENT_PROFILE } from '@/lib/client-profile';
 import { brandLocalBusinessSchema, jsonLdScript } from '@/lib/schema';
-import { GADS_ID } from '@/lib/analytics';
+import { GA4_ID, GADS_ID } from '@/lib/analytics';
 import { ConversionTracker } from '@/components/ConversionTracker';
 import './globals.css';
 
@@ -74,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col">
         <ConversionTracker />
         {children}
-        <GoogleAnalytics gaId="G-W2QRVH1SY8" />
+        {GA4_ID ? <GoogleAnalytics gaId={GA4_ID} /> : null}
       </body>
     </html>
   );
