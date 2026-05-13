@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { CLIENT_PROFILE } from '@/lib/client-profile';
 import { brandLocalBusinessSchema, jsonLdScript } from '@/lib/schema';
-import { GA4_ID, GADS_ID } from '@/lib/analytics';
+import { GADS_ID } from '@/lib/analytics';
 import { ConversionTracker } from '@/components/ConversionTracker';
 import './globals.css';
 
@@ -46,29 +47,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={jsonLdScript(brandLocalBusinessSchema())}
         />
-        {(GA4_ID || GADS_ID) ? (
+        {GADS_ID ? (
           <>
             {/*
-              Load gtag.js with the Google Ads (AW-) ID, not the GA4 (G-) ID.
-              Reason: brand-new GA4 properties take 24-48h to propagate to
-              Google's tag CDN; until then, gtag/js?id=G-XXXX returns HTTP 404
-              and the entire tag library fails to load. The AW- endpoint
-              serves the same gtag.js script. The GA4 property still gets
-              registered via the gtag('config', G-XXXX) call below — the ID
-              in the script src is just a CDN cache key, not a config.
+              Google Ads (AW-) gtag loader. GA4 is handled by
+              <GoogleAnalytics> from @next/third-parties below.
+              We keep this block so that Google Ads conversion events
+              fired from <ConversionTracker /> still have a gtag config.
             */}
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GADS_ID ?? GA4_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${GADS_ID}`}
               strategy="afterInteractive"
             />
-            <Script id="ga-config" strategy="afterInteractive">
+            <Script id="gads-config" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('set', 'linker', { domains: ['adventuresbythesea.com', 'bookadventuresbythesea.com', 'fareharbor.com'] });
-                ${GADS_ID ? `gtag('config', '${GADS_ID}');` : ''}
-                ${GA4_ID ? `gtag('config', '${GA4_ID}');` : ''}
+                gtag('config', '${GADS_ID}');
               `}
             </Script>
           </>
@@ -77,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col">
         <ConversionTracker />
         {children}
+        <GoogleAnalytics gaId="G-W2QRVH1SY8" />
       </body>
     </html>
   );
