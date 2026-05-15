@@ -53,14 +53,14 @@ export const CLIENT_PROFILE = {
   serviceArea: ['Monterey, CA', 'Pacific Grove, CA', 'Pebble Beach, CA', 'Carmel, CA'],
 
   pricingFloors: {
-    traditionalBikeRental: 27.82,
-    eBikeRental: 42.8,
-    kayakRental: 42.8,
-    paddleBoardRental: 37.45,
-    publicKayakTour: 69.55,
-    surreyRental: 77.04,
-    eBike17MileDriveTour: 80.25,
-    verifiedDate: '2026-05-01',
+    traditionalBikeRental: 13,
+    eBikeRental: 35,
+    kayakRental: 42.8, // not sold on landing pages — tours only
+    paddleBoardRental: 37.45, // not sold on landing pages
+    publicKayakTour: 65,
+    surreyRental: 36,
+    eBike17MileDriveTour: 75,
+    verifiedDate: '2026-05-15',
   },
 
   groupCapacity: {

@@ -8,11 +8,10 @@ import {
 } from '@/lib/schema';
 import { PillarPage, type PillarPageProps } from '@/components/PillarPage';
 import type { Faq } from '@/components/FaqAccordion';
+import { FH } from '@/lib/booking';
 
 const PAGE_PATH = '/bike-rental-monterey/';
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
-const FH_BOOK =
-  'https://fareharbor.com/embeds/book/adventuresbythesea-canneryrow/items/84523/calendar/?ref=https://adventuresbythesea.com&back=https://adventuresbythesea.com/cannery-row/';
 
 export const metadata: Metadata = {
   title: 'Monterey Bike Rental',
@@ -47,11 +46,6 @@ const FAQS: Faq[] = [
     answer: 'Yes, helmets are included with every rental at no extra charge.',
   },
   {
-    question: 'Is the 17 Mile Drive accessible by bike?',
-    answer:
-      'Yes — and an e-bike makes it significantly more enjoyable. The route has hills, so we recommend upgrading to an e-bike for the 17 Mile Drive.',
-  },
-  {
     question: 'Do you offer family bikes or bikes for kids?',
     answer:
       'Yes. We have kids bikes, trailer attachments, and 3-person and 6-person surreys that the whole family can ride together.',
@@ -64,9 +58,9 @@ const DATA: PillarPageProps = {
     title: 'Monterey Bike Rentals — Explore the Coast Your Way',
     subtitle:
       'Beach cruisers, hybrids, e-bikes, and family bikes available by the hour or day. Easy pickup near Cannery Row.',
-    pricePill: 'From $27.82/hour',
-    primaryCta: 'Reserve Your E-Bike — Most Popular →',
-    primaryCtaHref: FH_BOOK,
+    pricePill: 'From $13/hour',
+    primaryCta: 'Reserve Your Bike →',
+    primaryCtaHref: FH.TRAD_BIKE,
     backgroundImage:
       'https://adventuresbythesea.com/wp-content/uploads/sites/1900/2018/10/Hybrid-Bicycle-Rental-image-2.jpg',
   },
@@ -99,32 +93,32 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: 'Classic Bike Rental',
-      subtitle: 'Beach cruiser or hybrid. Great for flat coastal paths and casual rides.',
-      price: '$27.82',
+      subtitle: 'Beach cruiser or hybrid. $13/hr · $45 / 4 hours · $55 / whole day.',
+      price: '$13',
       priceUnit: '/hr',
       best: 'Best for: Easy riders, short distances, flat terrain.',
       cta: 'Book Classic →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.TRAD_BIKE,
     },
     {
       name: 'Electric Bike Rental',
       subtitle: 'Pedal-assist motor. Go twice as far. Handle any hill.',
-      price: '$42.80',
-      priceUnit: '/hr',
+      price: '$35',
+      priceUnit: '/ 2 hours',
       best: 'Most guests choose this. Best for 17 Mile Drive, mixed-ability groups.',
       cta: 'Reserve E-Bike — Most Popular →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.EBIKE_RENTAL,
       badge: 'Most Popular',
       featured: true,
     },
     {
       name: 'Guided E-Bike Tour',
       subtitle: 'E-bike + expert local guide. The full Monterey story, effortlessly.',
-      price: '$80.25',
+      price: '$75',
       priceUnit: '/person',
       best: 'Best for: First-time visitors who want to see everything.',
       cta: 'Book Guided Tour →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.EBIKE_17MILE,
       badge: 'Best Experience',
     },
   ],
@@ -173,14 +167,14 @@ const DATA: PillarPageProps = {
   faqs: FAQS,
   faqHeading: 'Bike Rental FAQ',
   upsellLines: [
-    'Upgrade to electric bike (+$14.98/hr)',
-    'Book the guided 17 Mile Drive tour ($80.25/person)',
-    'Add an extra hour (+$27.82)',
+    'Upgrade to e-bike ($35 / 2 hours)',
+    'Book the guided 17 Mile Drive tour ($75/person)',
+    'Add an extra hour (+$13)',
   ],
   finalCta: {
     title: 'Book Your Monterey Bike Rental',
     subtitle: 'No experience necessary. All ages welcome. Easy online booking.',
-    href: FH_BOOK,
+    href: FH.TRAD_BIKE,
   },
 };
 
@@ -195,7 +189,7 @@ export default function BikeRentalMontereyPage() {
       serviceType: 'Bike Rental',
       description:
         'Beach cruisers, hybrids, e-bikes, and family bikes by the hour or day. Pickup at Cannery Row, Monterey.',
-      priceFloor: 27.82,
+      priceFloor: 13,
       priceUnit: 'per hour',
     }),
     faqPageSchema(FAQS),

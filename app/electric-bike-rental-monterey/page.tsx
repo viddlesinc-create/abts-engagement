@@ -8,16 +8,15 @@ import {
 } from '@/lib/schema';
 import { PillarPage, type PillarPageProps } from '@/components/PillarPage';
 import type { Faq } from '@/components/FaqAccordion';
+import { FH, BOOKING_PHONE_HREF } from '@/lib/booking';
 
 const PAGE_PATH = '/electric-bike-rental-monterey/';
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
-const FH_BOOK =
-  'https://fareharbor.com/embeds/book/adventuresbythesea-canneryrow/items/84523/calendar/?ref=https://adventuresbythesea.com&back=https://adventuresbythesea.com/cannery-row/';
 
 export const metadata: Metadata = {
   title: 'Electric Bike Rentals in Monterey',
   description:
-    'Premium e-bike rentals in Monterey — Rad Power Bikes, Blix, AIMA. Tackle the 17 Mile Drive effortlessly. From $42.80/hr. Book online.',
+    'Premium e-bike rentals in Monterey — Rad Power Bikes, Blix, AIMA. Tackle the 17 Mile Drive effortlessly. From $35 / 2 hours. Book online.',
   alternates: { canonical: PAGE_PATH },
 };
 
@@ -30,7 +29,7 @@ const FAQS: Faq[] = [
   {
     question: 'How far can I ride on a single battery charge?',
     answer:
-      'Our fleet (Rad Power Bikes, Blix, and AIMA with 500W Bafang motors) offers ample range for the 17 Mile Drive or a full day of coastal riding — more than enough for any route we recommend.',
+      'Our fleet (Rad Power Bikes, Blix, and AIMA with 500W Bafang motors) delivers a 30–40 mile range per charge — more than enough for the full 17 Mile Drive or a day of coastal riding.',
   },
   {
     question: 'Can I ride the 17 Mile Drive on an e-bike?',
@@ -45,7 +44,7 @@ const FAQS: Faq[] = [
   {
     question: 'What age and fitness level are e-bikes appropriate for?',
     answer:
-      'Our e-bikes are suitable for riders of all ages and fitness levels. We recommend them for anyone who wants to cover more ground, tackle hills, or has physical limitations that make standard cycling difficult.',
+      'Riders must be 13 or older to ride an e-bike. Within that, all fitness levels are welcome — the pedal-assist makes hills easy for any rider who is comfortable on a regular bike.',
   },
   {
     question: 'How do I control the pedal-assist level?',
@@ -58,9 +57,14 @@ const FAQS: Faq[] = [
       'Yes, cyclists and pedestrians access the 17 Mile Drive toll road for free. Only motor vehicles pay the toll.',
   },
   {
-    question: 'Can I take the e-bike to Carmel or Pacific Grove?',
+    question: 'Can I take the e-bike on the 17-Mile Drive?',
     answer:
-      'Yes. Both are accessible from our Cannery Row location. Ask for our recommended routes at pickup.',
+      'Yes — and it is the best way to ride it. The 30–40 mile range easily covers the full 17-Mile Drive loop with energy to spare for stops at Bird Rock, the Lone Cypress, and Pebble Beach.',
+  },
+  {
+    question: 'Can I take the e-bike to Pacific Grove?',
+    answer:
+      'Yes — Pacific Grove is a short, scenic ride from our Cannery Row location. Ask for our recommended routes at pickup.',
   },
 ];
 
@@ -70,16 +74,16 @@ const DATA: PillarPageProps = {
     title: 'Electric Bike Rentals in Monterey — Ride Farther, Explore More',
     subtitle:
       "Premium e-bikes that make the Monterey Peninsula's hills effortless. The 17 Mile Drive, Pacific Grove, and the coastal Recreation Trail — all within reach.",
-    pricePill: 'From $42.80/hour',
+    pricePill: 'From $35 / 2 hours',
     primaryCta: 'Reserve Your E-Bike →',
-    primaryCtaHref: FH_BOOK,
+    primaryCtaHref: FH.EBIKE_RENTAL,
     backgroundImage:
       'https://adventuresbythesea.com/wp-content/uploads/sites/1900/2018/10/Electric-Bike-Rental-image-1.jpg',
   },
   trustBadges: [
     '⚡ Premium E-Bike Fleet',
-    '🔋 Up to 30 miles per charge',
-    '👥 All Ages & Fitness Levels',
+    '🔋 30–40 mile range',
+    '👥 Riders 13+ on e-bikes',
     '✓ No Experience Needed',
   ],
   howItWorks: [
@@ -105,21 +109,21 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: 'E-Bike Rental — Self-Guided',
-      subtitle: 'You choose the route. We give you the bike, map, and orientation.',
-      price: '$42.80',
-      priceUnit: '/hr',
+      subtitle: 'You choose the route. We give you the bike, map, and orientation. $35 / 2 hours · $60 / 4 hours.',
+      price: '$35',
+      priceUnit: '/ 2 hours',
       best: 'Best for confident explorers who know what they want to see.',
       cta: 'Book Self-Guided →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.EBIKE_RENTAL,
     },
     {
       name: 'Guided 17 Mile Drive E-Bike Tour',
       subtitle: 'Expert guide, all the best stops on the iconic 17 Mile Drive.',
-      price: '$80.25',
+      price: '$75',
       priceUnit: '/person',
       best: 'This is what we recommend for first-time visitors to Monterey.',
       cta: 'Book Guided Tour →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.EBIKE_17MILE,
       badge: 'Most Popular',
       featured: true,
     },
@@ -129,7 +133,7 @@ const DATA: PillarPageProps = {
       price: 'Custom',
       best: 'The best way to see Monterey on your terms.',
       cta: '📞 Call to Book Private →',
-      ctaHref: 'tel:+18313721807',
+      ctaHref: BOOKING_PHONE_HREF,
       badge: 'Best Experience',
     },
   ],
@@ -150,11 +154,6 @@ const DATA: PillarPageProps = {
       chip: 'Most Popular',
     },
     {
-      name: 'Carmel-by-the-Sea',
-      meta: '12 miles round trip · 2–3 hr · Moderate',
-      body: 'Through Pacific Grove and along Asilomar to downtown Carmel — coastal bluffs, beach overlooks, and shopping.',
-    },
-    {
       name: 'Coastal Recreation Trail',
       meta: 'As far as you want · Easy',
       body: 'Cannery Row to Castroville on the bayfront trail — flat, paved, and scenic the entire way.',
@@ -173,21 +172,21 @@ const DATA: PillarPageProps = {
     },
     {
       stars: 5,
-      text: '"Did the ride to Carmel and back. Hills were no problem and the bike handled perfectly. Will rent e-bikes exclusively from now on."',
+      text: '"Rode the full 17-Mile Drive and still had battery to spare on the way back. Hills were no problem and the bike handled perfectly. Will rent e-bikes exclusively from now on."',
       author: '— Karen S., Google Review',
     },
   ],
   faqs: FAQS,
   faqHeading: 'E-Bike FAQ',
   upsellLines: [
-    'Upgrade to the guided 17 Mile Drive tour ($80.25/person)',
-    'Add an extra hour of self-guided riding ($42.80)',
+    'Upgrade to the guided 17 Mile Drive tour ($75/person)',
+    'Extend to 4 hours of self-guided riding ($60)',
     'Book a private group ride — call for pricing',
   ],
   finalCta: {
     title: 'Ready to Ride the Whole Peninsula?',
     subtitle: 'Premium e-bikes. Effortless hills. The full Monterey story.',
-    href: FH_BOOK,
+    href: FH.EBIKE_RENTAL,
   },
 };
 
@@ -202,8 +201,8 @@ export default function ElectricBikeRentalMontereyPage() {
       serviceType: 'Electric Bike Rental',
       description:
         'Premium e-bikes (Rad Power, Blix, AIMA) with 500W motors and 5 levels of pedal-assist. Pickup at Cannery Row, Monterey.',
-      priceFloor: 42.8,
-      priceUnit: 'per hour',
+      priceFloor: 35,
+      priceUnit: 'per 2 hours',
     }),
     faqPageSchema(FAQS),
   ];

@@ -8,17 +8,16 @@ import {
 } from '@/lib/schema';
 import { PillarPage, type PillarPageProps } from '@/components/PillarPage';
 import type { Faq } from '@/components/FaqAccordion';
+import { FH, BOOKING_PHONE_HREF } from '@/lib/booking';
 
 const PAGE_PATH = '/kayak-tours-monterey-bay/';
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
-const FH_BOOK =
-  'https://fareharbor.com/embeds/book/adventuresbythesea-canneryrow/items/84523/calendar/?ref=https://adventuresbythesea.com&back=https://adventuresbythesea.com/cannery-row/';
 
 export const metadata: Metadata = {
   title:
-    'Kayak Tours Monterey Bay | Pebble Beach, Cannery Row & Lovers Point',
+    'Kayak Tours Monterey Bay | Sea Lions, Sea Otters & Harbor Seals',
   description:
-    'Guided kayak tours launching from Pebble Beach, Cannery Row, and Lovers Point. Paddle with sea otters and harbor seals. Daily departures. From $69.55/person.',
+    'Guided kayak tours launching from Cannery Row and Pebble Beach. Paddle with sea lions, sea otters, and harbor seals. Daily departures. From $65/person.',
   alternates: { canonical: PAGE_PATH },
 };
 
@@ -31,12 +30,17 @@ const FAQS: Faq[] = [
   {
     question: 'What wildlife can I expect to see on a Monterey Bay kayak tour?',
     answer:
-      'Monterey Bay is home to sea otters, harbor seals, brown pelicans, cormorants, and sea lions. Wildlife sightings are very common but never guaranteed — our guides know exactly where to look.',
+      'We always see sea lions, harbor seals, and otters on this route. Monterey Bay is also home to brown pelicans, cormorants, and the occasional dolphin or whale offshore — our guides know exactly where to look.',
   },
   {
-    question: 'What is the difference between the three tour locations?',
+    question: 'What is the difference between the two launch locations?',
     answer:
-      'Pebble Beach (Stillwater Cove) offers paddling in the heart of 17 Mile Drive with iconic scenery — our most scenic and premium tour. Cannery Row launches from the heart of Monterey with excellent sea otter and harbor seal sightings. Lovers Point in Pacific Grove is a quieter, scenic launch with beautiful coastal bluffs and kelp beds.',
+      'Cannery Row launches from the heart of Monterey with excellent sea otter, harbor seal, and sea lion density — our most popular tour. Pebble Beach (Stillwater Cove) is the premium option: paddling in the heart of 17 Mile Drive with iconic scenery and the lighthouse as backdrop.',
+  },
+  {
+    question: 'Are there age restrictions on the Pebble Beach tour?',
+    answer:
+      'Recommended age: no younger children on the Pebble Beach (Stillwater Cove) tour. The cove can be choppier than Cannery Row. The Cannery Row tour is the better fit for families with small kids.',
   },
   {
     question: 'How long is the guided kayak tour?',
@@ -45,17 +49,17 @@ const FAQS: Faq[] = [
   {
     question: 'What is included in the guided tour price?',
     answer:
-      'Everything: kayak, paddle, Coast Guard-approved life jacket, splash gear, water bottle, safety briefing, and your expert guide throughout the paddle.',
+      'Everything: kayak, paddle, Coast Guard-approved life jacket, splash gear, dry bag, safety briefing, and your expert guide throughout the paddle. We also offer a changing room before and after your tour.',
   },
   {
     question: 'What should I wear and bring on a kayak tour?',
     answer:
-      "Wear clothes you don't mind getting wet and bring sunscreen. We provide splash gear, a water bottle, life jackets, and all paddling gear. Leave valuables in your car.",
+      "Wear clothes you don't mind getting wet and bring sunscreen. We provide splash gear, dry bag, life jackets, and all paddling gear. A changing room is available before and after the tour. Leave valuables in your car.",
   },
   {
     question: 'Are double kayaks available for couples or families?',
     answer:
-      'Yes, tandem (double) kayaks are available on all tours. Great for couples, parents with children, or anyone who prefers to paddle together.',
+      'Yes, tandem (double) kayaks are available on all tours. Great for couples, parents with children, or anyone who prefers to paddle together. Great for dogs, too.',
   },
   {
     question: 'What happens if conditions are too rough on our tour day?',
@@ -67,31 +71,31 @@ const FAQS: Faq[] = [
 const DATA: PillarPageProps = {
   hero: {
     eyebrow: 'Guided Kayak Tours · Monterey Bay',
-    title: 'Kayak Tours of Monterey Bay — Paddle With Otters and Harbor Seals',
+    title: 'Monterey Bay Kayak Tours — Sea Lions, Sea Otters & Harbor Seals',
     subtitle:
-      'Expert-guided 2-hour tours launching daily from three iconic locations. All skill levels welcome. No experience needed.',
-    pricePill: 'From $69.55/person',
-    primaryCta: 'Book a Kayak Tour →',
-    primaryCtaHref: FH_BOOK,
+      'Expert-guided 2-hour tours launching daily from Cannery Row and Pebble Beach. All skill levels welcome. No experience needed.',
+    pricePill: 'From $65/person',
+    primaryCta: 'Ready to Paddle →',
+    primaryCtaHref: FH.KAYAK_CANNERY,
     backgroundImage:
       'https://adventuresbythesea.com/wp-content/uploads/sites/1900/2018/10/Kayak-Tour-Cover-FH.jpg',
   },
   trustBadges: [
-    '🦦 Sea otters · harbor seals · sea lions',
+    '🦁 Sea lions · sea otters · harbor seals',
     '👨‍🏫 Expert guides · all skill levels',
-    '🚣 3 launch locations',
+    '🚣 2 launch locations + private tours',
     '⏱ 2-hour tours daily',
   ],
   howItWorks: [
     {
       num: 1,
       title: 'Choose Your Launch',
-      body: 'Pebble Beach (Stillwater Cove), Cannery Row, or Lovers Point — each has its own character.',
+      body: 'Cannery Row in the heart of Monterey, or Pebble Beach (Stillwater Cove) inside 17 Mile Drive — each has its own character.',
     },
     {
       num: 2,
       title: 'Gear Up at the Beach',
-      body: 'Splash gear, life jacket, paddle, and a 10-minute briefing from your guide before you launch.',
+      body: 'Splash gear, life jacket, paddle, and a 10-minute briefing from your guide before you launch. We also offer a changing room before and after your incredible experience.',
     },
     {
       num: 3,
@@ -105,32 +109,31 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: 'Cannery Row Tour',
-      subtitle: 'Launch from the heart of Monterey. Best sea-otter density anywhere on the bay.',
-      price: '$69.55',
+      subtitle: 'Launch from the heart of Monterey. Best sea-lion and sea-otter density anywhere on the bay.',
+      price: '$65',
       priceUnit: '/person',
       best: 'Best for: First-time paddlers, photographers, classic Monterey experience.',
       cta: 'Book Cannery Row →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.KAYAK_CANNERY,
     },
     {
       name: 'Pebble Beach (Stillwater Cove)',
-      subtitle: 'Paddle in the heart of 17 Mile Drive. Pebble Beach Golf Links as backdrop.',
-      price: '$84.55',
+      subtitle: 'Explore the cove that surrounds the iconic Pebble Beach golf course.',
+      price: '$85',
       priceUnit: '/person',
       best: 'Most scenic option. Premium experience.',
       cta: 'Book Pebble Beach →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.KAYAK_PEBBLE,
       badge: 'Most Scenic',
       featured: true,
     },
     {
-      name: 'Lovers Point Tour',
-      subtitle: 'Quieter launch with coastal bluffs and kelp beds. Perfect for nervous paddlers.',
-      price: '$69.55',
-      priceUnit: '/person',
-      best: 'Best for: Families, mellow paddle, fewer crowds.',
-      cta: 'Book Lovers Point →',
-      ctaHref: FH_BOOK,
+      name: 'Private Tour',
+      subtitle: 'Just your group. Private guide. Custom launch, custom pace.',
+      price: 'Call',
+      best: 'Best for: Families, special occasions, groups who want their own paddle.',
+      cta: '📞 Call to Book Private',
+      ctaHref: BOOKING_PHONE_HREF,
     },
   ],
   included: [
@@ -138,7 +141,8 @@ const DATA: PillarPageProps = {
     'Coast Guard-approved life jacket',
     'Splash gear (waterproof outerwear)',
     'Paddle',
-    'Water bottle',
+    'Dry bag',
+    'Changing room before and after your tour',
     'Expert guide for the full 2 hours',
   ],
   reviews: [
@@ -149,7 +153,7 @@ const DATA: PillarPageProps = {
     },
     {
       stars: 5,
-      text: '"Pebble Beach tour was magical — paddling under Pebble Beach Golf Links. Worth the upgrade."',
+      text: '"Pebble Beach tour was magical — paddling the cove with the lighthouse in view. Worth the upgrade."',
       author: '— Greg P., TripAdvisor',
     },
     {
@@ -161,14 +165,14 @@ const DATA: PillarPageProps = {
   faqs: FAQS,
   faqHeading: 'Kayak Tour FAQ',
   upsellLines: [
-    'Upgrade to the Pebble Beach (Stillwater Cove) tour ($84.55/person)',
-    'Add a tandem kayak for couples or parent-child paddles',
+    'Upgrade to the Pebble Beach (Stillwater Cove) tour ($85/person)',
+    'Add a tandem kayak for couples, parent-child paddles, or dogs',
     'Book a private tour — call for custom pricing',
   ],
   finalCta: {
     title: 'Book Your Monterey Bay Kayak Tour',
     subtitle: 'Daily departures. All gear included. No experience required.',
-    href: FH_BOOK,
+    href: FH.KAYAK_CANNERY,
   },
 };
 
@@ -182,10 +186,10 @@ export default function KayakToursMontereyBayPage() {
       pageUrl: PAGE_URL,
       name: 'Monterey Bay Kayak Tour',
       description:
-        'Expert-guided 2-hour kayak tours from Cannery Row, Pebble Beach (Stillwater Cove), and Lovers Point.',
-      priceFloor: 69.55,
+        'Expert-guided 2-hour kayak tours from Cannery Row and Pebble Beach (Stillwater Cove). See sea lions, sea otters, and harbor seals.',
+      priceFloor: 65,
       priceUnit: 'per person',
-      itinerary: ['Cannery Row launch', 'Pebble Beach (Stillwater Cove) launch', 'Lovers Point launch'],
+      itinerary: ['Cannery Row launch', 'Pebble Beach (Stillwater Cove) launch', 'Private tour by request'],
     }),
     faqPageSchema(FAQS),
   ];

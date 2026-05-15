@@ -8,17 +8,16 @@ import {
 } from '@/lib/schema';
 import { PillarPage, type PillarPageProps } from '@/components/PillarPage';
 import type { Faq } from '@/components/FaqAccordion';
+import { FH } from '@/lib/booking';
 
 const PAGE_PATH = '/surrey-bike-rental-monterey/';
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
-const FH_BOOK =
-  'https://fareharbor.com/embeds/book/adventuresbythesea-canneryrow/items/84523/calendar/?ref=https://adventuresbythesea.com&back=https://adventuresbythesea.com/cannery-row/';
 
 export const metadata: Metadata = {
   title:
     'Surrey Bike Rental Monterey | 3 & 6 Person Surreys at Portola Hotel + Cannery Row',
   description:
-    'Rent a 3-person or 6-person surrey bike on the Monterey Peninsula. Pick up at Portola Hotel or Cannery Row. The whole family in one ride. From $77.04/hr.',
+    'Rent a 3-person or 6-person surrey bike on the Monterey Peninsula. Pick up at Portola Hotel or Cannery Row. The whole family in one ride. From $36/hr.',
   alternates: { canonical: PAGE_PATH },
 };
 
@@ -31,11 +30,6 @@ const FAQS: Faq[] = [
   {
     question: 'Do kids need to be a certain age to ride in the surrey?',
     answer: 'No minimum age. Kids of any age ride in the back seats with parents pedaling.',
-  },
-  {
-    question: 'Is the surrey hard to pedal?',
-    answer:
-      "It's slower than a regular bike but flat and easy on the Recreation Trail. Two adults pedaling share the work.",
   },
   {
     question: 'Where can I take a surrey?',
@@ -68,9 +62,9 @@ const DATA: PillarPageProps = {
     title: 'Surrey Bike Rentals in Monterey — The Whole Family in One Ride',
     subtitle:
       "3-person and 6-person surreys. Everyone pedals (or doesn't). All ages, all fitness levels. The Recreation Trail and Monterey coast in one shared experience.",
-    pricePill: 'From $77.04/hour',
+    pricePill: 'From $36/hour',
     primaryCta: 'Reserve a Surrey →',
-    primaryCtaHref: FH_BOOK,
+    primaryCtaHref: FH.SURREY,
     backgroundImage:
       'https://adventuresbythesea.com/wp-content/uploads/sites/1900/2018/10/Surrey-Rental-image-1.jpg',
   },
@@ -101,20 +95,21 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: '3-Person Surrey',
-      subtitle: 'Two adults pedal up front, one rider on the back bench.',
-      price: '$77.04',
+      subtitle: 'Seats 3 adults or 2 adults + 2 kids in baskets. Two adults pedal up front.',
+      price: '$36',
       priceUnit: '/hr',
       best: 'Best for: Couples + 1 child, or 3 adults sharing the ride.',
       cta: 'Book 3-Person →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.SURREY,
     },
     {
       name: '6-Person Surrey',
-      subtitle: 'Two adults pedal, four ride in back. Whole family covered.',
-      price: 'Call',
+      subtitle: 'Seats 6 adults or up to 6 adults + 2 kids in baskets. Two adults pedal, the rest ride in back.',
+      price: '$46',
+      priceUnit: '/hr',
       best: 'Best for: Families of 4–6, multi-generational groups.',
-      cta: '📞 Call for Availability',
-      ctaHref: 'tel:+18313721807',
+      cta: 'Book 6-Person →',
+      ctaHref: FH.SURREY,
       badge: 'Most Popular',
       featured: true,
     },
@@ -124,7 +119,7 @@ const DATA: PillarPageProps = {
       price: 'Mix',
       best: 'Best for: Mixed-age groups where some riders want their own ride.',
       cta: 'Book a Mix →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.SURREY,
     },
   ],
   included: [
@@ -138,8 +133,8 @@ const DATA: PillarPageProps = {
   routes: [
     {
       name: 'Cannery Row Loop',
-      meta: '2 miles · ~1 hour · Easy',
-      body: 'Down Cannery Row, past the Aquarium, along the Recreation Trail to Lovers Point and back.',
+      meta: '3–6 miles · ~1 hour · Easy',
+      body: 'Down Cannery Row, past the Cannery Row Aquarium, along the Recreation Trail to Lovers Point and back.',
     },
     {
       name: 'Pacific Grove Coastline',
@@ -173,14 +168,14 @@ const DATA: PillarPageProps = {
   faqs: FAQS,
   faqHeading: 'Surrey Rental FAQ',
   upsellLines: [
-    'Add an extra hour ($77.04)',
-    'Add a regular bike for the older kid (+$27.82/hr)',
+    'Add an extra hour ($36)',
+    'Add a regular bike for the older kid (+$13/hr)',
     'Book a guided photo session along the route',
   ],
   finalCta: {
     title: 'Reserve Your Family Surrey',
     subtitle: 'Pick up at Portola Hotel or Cannery Row. All ages welcome.',
-    href: FH_BOOK,
+    href: FH.SURREY,
   },
 };
 
@@ -195,7 +190,7 @@ export default function SurreyBikeRentalMontereyPage() {
       serviceType: 'Surrey Bike Rental',
       description:
         '3-person and 6-person surreys for families. Pickup at Portola Hotel and Cannery Row, Monterey.',
-      priceFloor: 77.04,
+      priceFloor: 36,
       priceUnit: 'per hour',
     }),
     faqPageSchema(FAQS),

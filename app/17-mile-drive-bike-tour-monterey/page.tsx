@@ -8,16 +8,15 @@ import {
 } from '@/lib/schema';
 import { PillarPage, type PillarPageProps } from '@/components/PillarPage';
 import type { Faq } from '@/components/FaqAccordion';
+import { FH, BOOKING_PHONE_HREF } from '@/lib/booking';
 
 const PAGE_PATH = '/17-mile-drive-bike-tour-monterey/';
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
-const FH_BOOK =
-  'https://fareharbor.com/embeds/book/adventuresbythesea-canneryrow/items/84523/calendar/?ref=https://adventuresbythesea.com&back=https://adventuresbythesea.com/cannery-row/';
 
 export const metadata: Metadata = {
   title: '17 Mile Drive Bike Tour Monterey | Guided E-Bike Tours',
   description:
-    'Guided e-bike tour of the 17 Mile Drive — Lone Cypress, Bird Rock, Pebble Beach. All hills handled by pedal-assist. Half-day tour. From $80.25/person.',
+    'Guided e-bike tour of the 17 Mile Drive — Lone Cypress, Bird Rock, Pebble Beach. All hills handled by pedal-assist. 2.5 hours, 20–25 miles. From $75/person.',
   alternates: { canonical: PAGE_PATH },
 };
 
@@ -25,7 +24,7 @@ const FAQS: Faq[] = [
   {
     question: 'How long does the 17 Mile Drive bike tour take?',
     answer:
-      'Approximately 3.5 hours total — 17 miles of riding plus photo and story stops at every major landmark.',
+      'Approximately 2.5 hours total — 20–25 miles of riding plus photo and story stops at every major landmark.',
   },
   {
     question: 'Do I need to be in good shape for this tour?',
@@ -69,14 +68,14 @@ const DATA: PillarPageProps = {
     title: '17 Mile Drive Bike Tour — Pebble Beach by E-Bike, Effortless',
     subtitle:
       'Pebble Beach. Lone Cypress. Bird Rock. The most photographed coastline in California, on premium 500W e-bikes with an expert local guide. Every hill effortless. Every photo stop, intentional.',
-    pricePill: 'From $80.25/person',
+    pricePill: 'From $75/person',
     primaryCta: 'Book the Guided Tour →',
-    primaryCtaHref: FH_BOOK,
+    primaryCtaHref: FH.EBIKE_17MILE,
     backgroundImage:
       'https://adventuresbythesea.com/wp-content/uploads/sites/1900/2018/10/17-Mile-Drive-Bicycle-Tour-image-1.jpg',
   },
   trustBadges: [
-    '⏱ 3.5 hours total · 17 miles',
+    '⏱ 2.5 hours total · 20–25 miles',
     '⚡ 500W e-bikes · 5 assist levels',
     '👨‍🏫 Expert local guide',
     '📸 Stops at every landmark',
@@ -104,21 +103,21 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: 'Self-Guided E-Bike',
-      subtitle: 'Rent the e-bike, get the route map, ride at your own pace.',
-      price: '$42.80',
-      priceUnit: '/hr',
+      subtitle: 'Rent the e-bike, get the route map, ride at your own pace. $35 / 2 hours · $60 / 4 hours.',
+      price: '$35',
+      priceUnit: '/ 2 hours',
       best: 'Best for: Confident riders who want full schedule control.',
       cta: 'Book Self-Guided →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.EBIKE_RENTAL,
     },
     {
       name: 'Guided 17 Mile Drive Tour',
-      subtitle: 'Expert guide, 3.5 hours, all the best stops with local stories.',
-      price: '$80.25',
+      subtitle: 'Expert guide, 2.5 hours, all the best stops with local stories.',
+      price: '$75',
       priceUnit: '/person',
       best: 'Best for: First-time visitors, anyone who wants the full Monterey story.',
       cta: 'Book Guided Tour →',
-      ctaHref: FH_BOOK,
+      ctaHref: FH.EBIKE_17MILE,
       badge: 'Most Popular',
       featured: true,
     },
@@ -128,7 +127,7 @@ const DATA: PillarPageProps = {
       price: 'Custom',
       best: 'Best for: Families, special occasions, corporate groups.',
       cta: '📞 Call to Book Private',
-      ctaHref: 'tel:+18313721807',
+      ctaHref: BOOKING_PHONE_HREF,
       badge: 'Best Experience',
     },
   ],
@@ -138,7 +137,6 @@ const DATA: PillarPageProps = {
     'Helmet and lock',
     '17 Mile Drive toll (cyclists are free)',
     'Photo stops at every major landmark',
-    'Bottled water',
   ],
   routesHeading: 'What You Will See',
   routes: [
@@ -183,12 +181,12 @@ const DATA: PillarPageProps = {
   upsellLines: [
     'Add an extra hour of self-guided riding after the tour',
     'Upgrade to private group tour — call for pricing',
-    'Combine with a Pebble Beach kayak tour ($84.55/person)',
+    'Combine with a Pebble Beach kayak tour ($85/person)',
   ],
   finalCta: {
     title: 'Book the 17 Mile Drive Bike Tour',
     subtitle: 'The most photographed coastline in California, on an e-bike, with an expert guide.',
-    href: FH_BOOK,
+    href: FH.EBIKE_17MILE,
   },
 };
 
@@ -202,8 +200,8 @@ export default function SeventeenMileDrivePage() {
       pageUrl: PAGE_URL,
       name: '17 Mile Drive E-Bike Tour',
       description:
-        'Guided 3.5-hour e-bike tour of the 17 Mile Drive through Pebble Beach. All hills handled by pedal-assist.',
-      priceFloor: 80.25,
+        'Guided 2.5-hour, 20–25 mile e-bike tour of the 17 Mile Drive through Pebble Beach. All hills handled by pedal-assist.',
+      priceFloor: 75,
       priceUnit: 'per person',
       itinerary: ['Cannery Row meet point', 'Bird Rock', 'Lone Cypress', 'Pebble Beach Lodge', 'Stillwater Cove'],
     }),

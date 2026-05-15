@@ -37,17 +37,17 @@ const PILLARS: Pillar[] = [
     eyebrow: 'Rung 1 — Volume',
     title: 'Bike Rental Monterey',
     sub: '6 pickup locations · cruisers, hybrids, family bikes — by the hour or day.',
-    priceLine: 'From $27.82/hr',
-    ladderLine: 'Climb hills effortlessly — upgrade to e-bike from $42.80/hr.',
+    priceLine: 'From $13/hr',
+    ladderLine: 'Climb hills effortlessly — upgrade to e-bike from $35 / 2 hours.',
     cta: 'Browse bikes',
   },
   {
     href: '/electric-bike-rental-monterey/',
     eyebrow: 'Rung 2 — AOV ladder',
     title: 'Electric Bike Rental Monterey',
-    sub: '500W e-bikes · 5 levels of pedal-assist + throttle.',
-    priceLine: 'From $42.80/hr',
-    ladderLine: 'Best for 17-Mile Drive — book the guided e-bike tour from $80.25/person.',
+    sub: '500W e-bikes · 5 levels of pedal-assist + throttle. Riders 13+.',
+    priceLine: 'From $35 / 2 hours',
+    ladderLine: 'Best for 17-Mile Drive — book the guided e-bike tour from $75/person.',
     cta: 'See e-bike fleet',
   },
   {
@@ -55,7 +55,7 @@ const PILLARS: Pillar[] = [
     eyebrow: 'Rung 3 — Family / group',
     title: 'Surrey Bike Rental Monterey',
     sub: '3- and 6-person surreys · Portola Hotel + Cannery Row pickup.',
-    priceLine: 'From $77.04/hr',
+    priceLine: 'From $36/hr',
     ladderLine: 'Pair with e-bikes for the adults — split the family across both.',
     cta: 'Book a surrey',
   },
@@ -63,8 +63,8 @@ const PILLARS: Pillar[] = [
     href: '/kayak-tours-monterey-bay/',
     eyebrow: 'Tours only — no rentals',
     title: 'Kayak Tours Monterey Bay',
-    sub: 'Guided sea-otter tours · Breakwater Cove · beginner-friendly floating ramp.',
-    priceLine: 'From $69.55/person',
+    sub: 'Guided sea lion, sea otter, and harbor seal tours · Cannery Row and Pebble Beach launches.',
+    priceLine: 'From $65/person',
     ladderLine: 'Step up to a private guided tour — quote on request.',
     cta: 'View tour times',
   },
@@ -72,8 +72,8 @@ const PILLARS: Pillar[] = [
     href: '/17-mile-drive-bike-tour-monterey/',
     eyebrow: 'Rung 4 — Ladder top',
     title: '17-Mile Drive Bike Tour',
-    sub: 'Self-guided or guided e-bike tour along the Pebble Beach coastline.',
-    priceLine: 'Guided e-bike tour from $80.25/person',
+    sub: 'Self-guided or guided e-bike tour along the Pebble Beach coastline. 2.5 hours · 20–25 miles.',
+    priceLine: 'Guided e-bike tour from $75/person',
     cta: 'Plan the tour',
   },
   {
@@ -87,9 +87,9 @@ const PILLARS: Pillar[] = [
 ];
 
 const LADDER = [
-  { rung: '1', label: 'Cruiser / Hybrid', price: '$27.82/hr' },
-  { rung: '2', label: 'E-Bike (500W, 5 PAS)', price: '$42.80/hr' },
-  { rung: '3', label: '17-Mile Drive E-Bike Tour', price: '$80.25/person' },
+  { rung: '1', label: 'Cruiser / Hybrid', price: '$13/hr' },
+  { rung: '2', label: 'E-Bike (500W, 5 PAS)', price: '$35 / 2 hours' },
+  { rung: '3', label: '17-Mile Drive E-Bike Tour', price: '$75/person' },
 ];
 
 export default function HomePage() {
