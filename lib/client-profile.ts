@@ -12,7 +12,7 @@ export const CLIENT_PROFILE = {
     foundingYear: 1987,
     yearsOperating: 38,
     description:
-      'Family-owned bike, e-bike, kayak, and SUP rentals on the Monterey Peninsula since 1987. Six locations across Monterey, Pacific Grove, and Pebble Beach.',
+      'Family-owned bike, e-bike, kayak, and SUP rentals on the Monterey Peninsula since 1987. Five locations across Monterey, Pacific Grove, and Pebble Beach.',
     logoUrl: '/abts-logo.webp',
     heroImageUrl: '/images/hero-cannery-row.jpg',
   },

@@ -116,7 +116,7 @@ export default function HomePage() {
               Adventures by the Sea — guides and gear, since {CLIENT_PROFILE.brand.foundingYear}.
             </h1>
             <p className="mt-6 max-w-prose text-lg text-sand/85">
-              Six locations across Monterey, Pacific Grove, and Pebble Beach. Bikes, e-bikes,
+              Five locations across Monterey, Pacific Grove, and Pebble Beach. Bikes, e-bikes,
               kayak tours, surreys, and the only Monterey outfitter that runs Beach Olympics for
               up to {CLIENT_PROFILE.groupCapacity.beachOlympicsMax} people.
             </p>
