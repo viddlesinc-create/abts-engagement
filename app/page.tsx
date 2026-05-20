@@ -23,7 +23,6 @@ export const metadata: Metadata = {
 
 type Pillar = {
   href: string;
-  eyebrow: string;
   title: string;
   sub: string;
   priceLine: string;
@@ -34,7 +33,6 @@ type Pillar = {
 const PILLARS: Pillar[] = [
   {
     href: '/bike-rental-monterey/',
-    eyebrow: 'Rung 1 — Volume',
     title: 'Bike Rental Monterey',
     sub: '6 pickup locations · cruisers, hybrids, family bikes — by the hour or day.',
     priceLine: 'From $13/hr',
@@ -43,7 +41,6 @@ const PILLARS: Pillar[] = [
   },
   {
     href: '/electric-bike-rental-monterey/',
-    eyebrow: 'Rung 2 — AOV ladder',
     title: 'Electric Bike Rental Monterey',
     sub: '500W e-bikes · 5 levels of pedal-assist + throttle. Riders 13+.',
     priceLine: 'From $35 / 2 hours',
@@ -52,7 +49,6 @@ const PILLARS: Pillar[] = [
   },
   {
     href: '/surrey-bike-rental-monterey/',
-    eyebrow: 'Rung 3 — Family / group',
     title: 'Surrey Bike Rental Monterey',
     sub: '3- and 6-person surreys · Portola Hotel + Cannery Row pickup.',
     priceLine: 'From $36/hr',
@@ -61,7 +57,6 @@ const PILLARS: Pillar[] = [
   },
   {
     href: '/kayak-tours-monterey-bay/',
-    eyebrow: 'Tours only — no rentals',
     title: 'Kayak Tours Monterey Bay',
     sub: 'Guided sea lion, sea otter, and harbor seal tours · Cannery Row and Pebble Beach launches.',
     priceLine: 'From $65/person',
@@ -70,7 +65,6 @@ const PILLARS: Pillar[] = [
   },
   {
     href: '/17-mile-drive-bike-tour-monterey/',
-    eyebrow: 'Rung 4 — Ladder top',
     title: '17-Mile Drive Bike Tour',
     sub: 'Self-guided or guided e-bike tour along the Pebble Beach coastline. 2.5 hours · 20–25 miles.',
     priceLine: 'Guided e-bike tour from $75/person',
@@ -78,7 +72,6 @@ const PILLARS: Pillar[] = [
   },
   {
     href: '/team-building-monterey/',
-    eyebrow: 'Highest AOV — quote only',
     title: 'Monterey Team Building',
     sub: 'Beach Olympics for groups of 15–400 · custom corporate retreats.',
     priceLine: 'Custom quote',
@@ -162,9 +155,6 @@ export default function HomePage() {
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-coast-900 text-sm text-sand">
                       {step.rung}
                     </span>
-                    <span className="text-xs uppercase tracking-wider text-ink/60">
-                      Rung {step.rung}
-                    </span>
                   </div>
                   <p className="mt-3 text-lg font-medium">{step.label}</p>
                   <p className="mt-1 text-coast">{step.price}</p>
@@ -193,8 +183,7 @@ export default function HomePage() {
                 href={p.href}
                 className="group rounded-2xl border border-coast/15 bg-white p-6 transition hover:border-coast/40 hover:shadow-md"
               >
-                <p className="text-xs uppercase tracking-widest text-coast/70">{p.eyebrow}</p>
-                <h3 className="mt-2 text-2xl">{p.title}</h3>
+                <h3 className="text-2xl">{p.title}</h3>
                 <p className="mt-2 text-ink/70">{p.sub}</p>
                 <p className="mt-3 font-medium text-coast">{p.priceLine}</p>
                 {p.ladderLine ? (
