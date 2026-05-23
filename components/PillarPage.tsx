@@ -37,6 +37,7 @@ export type PillarPageProps = {
   included: string[];
   routes?: Route[];
   routesHeading?: string;
+  midPageImage?: { src: string; alt: string };
   reviews: Review[];
   faqs: Faq[];
   faqHeading: string;
@@ -206,6 +207,18 @@ export function PillarPage({ data }: { data: PillarPageProps }) {
             </ul>
           </div>
         </section>
+
+        {/* MID-PAGE PHOTO */}
+        {data.midPageImage ? (
+          <section className="overflow-hidden">
+            <img
+              src={data.midPageImage.src}
+              alt={data.midPageImage.alt}
+              className="w-full max-h-[480px] object-cover object-center"
+              loading="lazy"
+            />
+          </section>
+        ) : null}
 
         {/* ROUTES */}
         {data.routes && data.routes.length > 0 ? (

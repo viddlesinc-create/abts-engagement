@@ -77,8 +77,7 @@ const DATA: PillarPageProps = {
     pricePill: 'From $35 / 2 hours',
     primaryCta: 'Reserve Your E-Bike →',
     primaryCtaHref: FH.EBIKE_RENTAL,
-    backgroundImage:
-      'https://adventuresbythesea.com/wp-content/uploads/sites/1900/2018/10/Electric-Bike-Rental-image-1.jpg',
+    backgroundImage: '/ebike-hero-marina.jpg',
   },
   trustBadges: [
     '⚡ Premium E-Bike Fleet',
@@ -145,6 +144,10 @@ const DATA: PillarPageProps = {
     'Pre-ride orientation',
     'Charged battery — full day range',
   ],
+  midPageImage: {
+    src: '/ebike-coastal-road.jpg',
+    alt: 'Rider on an Adventures By The Sea e-bike along the Monterey coastal trail',
+  },
   routesHeading: 'Your Monterey Peninsula, Unlocked',
   routes: [
     {
