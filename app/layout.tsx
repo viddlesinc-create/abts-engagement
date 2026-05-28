@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { CLIENT_PROFILE } from '@/lib/client-profile';
 import { brandLocalBusinessSchema, jsonLdScript } from '@/lib/schema';
-import { GA4_ID, GADS_ID } from '@/lib/analytics';
+import { GA4_ID, GADS_ID, GADS_ID_SECONDARY } from '@/lib/analytics';
 import { ConversionTracker } from '@/components/ConversionTracker';
 import './globals.css';
 
@@ -66,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 gtag('js', new Date());
                 gtag('set', 'linker', { domains: ['adventuresbythesea.com', 'bookadventuresbythesea.com', 'fareharbor.com'] });
                 gtag('config', '${GADS_ID}');
+                gtag('config', '${GADS_ID_SECONDARY}');
               `}
             </Script>
           </>

@@ -44,6 +44,7 @@
 
 export const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID ?? 'G-W2QRVH1SY8';
 export const GADS_ID = process.env.NEXT_PUBLIC_GADS_ID ?? 'AW-994138570';
+export const GADS_ID_SECONDARY = process.env.NEXT_PUBLIC_GADS_ID_SECONDARY ?? 'AW-18137623591';
 
 export type ConversionType = 'phone' | 'form' | 'booking';
 
@@ -51,8 +52,10 @@ type ConversionConfig =
   | {
       /** Legacy style — fires `gtag('event', 'conversion', { send_to, ... })`. */
       kind: 'send_to';
-      /** The label string after the slash in `AW-994138570/<label>`. */
+      /** The label string after the slash in `<AW-account>/<label>`. */
       label: string;
+      /** Which Google Ads account owns this conversion. Defaults to GADS_ID. */
+      accountId?: string;
       /** Default monetary value for this conversion. */
       value: number;
       /** Currency for value. Defaults to USD. */
@@ -94,7 +97,20 @@ const CONVERSIONS: ReadonlyArray<{
       },
     },
   },
-  // Future LPs (bike-rental-monterey, kayak-tours-monterey-bay, etc.) add here.
+  // Sitewide fallback — phone clicks on the 5 reservations LPs route to the
+  // new AW-18137623591 account. Team-building matches first above and is not
+  // affected. Lead value $50 (cruiser/kayak floor AOV assumption).
+  {
+    pathPrefix: '',
+    conversions: {
+      phone: {
+        kind: 'send_to',
+        accountId: GADS_ID_SECONDARY,
+        label: '12x7CMbP97QcEKfY2MhD',
+        value: 50,
+      },
+    },
+  },
 ];
 
 /**
@@ -185,7 +201,7 @@ export function trackConversion(opts: ConversionOptions): void {
   if (conv.kind === 'send_to') {
     // Legacy style — fire 'conversion' event with send_to.
     const params: Record<string, unknown> = {
-      send_to: `${GADS_ID}/${conv.label}`,
+      send_to: `${conv.accountId ?? GADS_ID}/${conv.label}`,
       value: typeof value === 'number' ? value : conv.value,
       currency: conv.currency ?? currency,
     };
