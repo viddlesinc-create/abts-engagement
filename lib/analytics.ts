@@ -106,7 +106,7 @@ const CONVERSIONS: ReadonlyArray<{
       phone: {
         kind: 'send_to',
         accountId: GADS_ID_SECONDARY,
-        label: '12x7CMbP97QcEKfY2MhD',
+        label: '0274COCYkbUcEKfY2MhD',
         value: 50,
       },
     },
