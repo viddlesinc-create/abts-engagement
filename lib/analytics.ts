@@ -76,6 +76,14 @@ type ConversionConfig =
  * Per-page conversion catalog. First match wins; iterate in order and pick
  * the first entry whose pathPrefix matches `pathname.startsWith(prefix)`.
  * Use an empty-string pathPrefix as the site-wide fallback (last entry only).
+ *
+ * Per-account scoping (May 2026):
+ *   AW-994138570 tracks the groups sales phone (831-648-7236) on
+ *     /team-building-monterey only.
+ *   AW-18137623591 tracks the reservations phone (831-372-1807) on the
+ *     5 reservations LPs + homepage.
+ *   Each phone click fires exactly one named conversion in exactly one
+ *     account — no dual-fire.
  */
 const CONVERSIONS: ReadonlyArray<{
   pathPrefix: string;
