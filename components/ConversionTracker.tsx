@@ -12,6 +12,13 @@ import { trackConversion } from '@/lib/analytics';
  *   1. A FareHarbor booking link — `<a href="https://fareharbor.com/embeds/book/...">`
  *      OR any link tagged with `data-fh-book`. Navigation is deferred until
  *      the tag fires.
+ *      NOTE: this is a GA4 engagement event (`fareharbor_click`) only — the
+ *      real Google Ads "Booking Complete" conversion is fired by FareHarbor
+ *      itself when checkout completes, via the `google-conversion-id` and
+ *      `google-conversion-label` params appended to FH embed URLs in
+ *      lib/booking.ts. Do not import `fareharbor_click` as a conversion in
+ *      Google Ads — it would inflate counts and train bidding on clickers,
+ *      not bookers.
  *
  *   2. A phone link — `<a href="tel:...">`. The dialer opens immediately;
  *      no navigation deferral needed.

@@ -91,11 +91,15 @@ const CONVERSIONS: ReadonlyArray<{
 }> = [
   {
     // Groups / team-building LP — high-value phone + form, no FareHarbor.
+    // Consolidated to AW-18137623591 alongside the reservations conversions
+    // so the entire ABTS funnel reports in one account. AW-994138570 group
+    // phone/form conversions in the old account should be archived.
     pathPrefix: '/team-building-monterey',
     conversions: {
       phone: {
         kind: 'send_to',
-        label: 'XOH4COvXwascEMqzhdoD',
+        accountId: GADS_ID_SECONDARY,
+        label: 'a44MCJr2_rYcEKfY2MhD', // "Click to call - Groups LP" in AW-18137623591
         value: 1500,
       },
       form: {
