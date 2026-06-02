@@ -12,7 +12,7 @@
  *
  *   1. send_to (legacy) — snippet looks like:
  *        gtag('event', 'conversion', {
- *          'send_to': 'AW-994138570/<LABEL>',
+ *          'send_to': 'AW-18137623591/<LABEL>',
  *          'value': 1500.0,
  *          'currency': 'USD'
  *        });
@@ -43,8 +43,8 @@
  */
 
 export const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID ?? 'G-W2QRVH1SY8';
-export const GADS_ID = process.env.NEXT_PUBLIC_GADS_ID ?? 'AW-994138570';
-export const GADS_ID_SECONDARY = process.env.NEXT_PUBLIC_GADS_ID_SECONDARY ?? 'AW-18137623591';
+// Single Google Ads account for the whole ABTS funnel.
+export const GADS_ID = process.env.NEXT_PUBLIC_GADS_ID ?? 'AW-18137623591';
 
 export type ConversionType = 'phone' | 'form' | 'booking';
 
@@ -77,13 +77,10 @@ type ConversionConfig =
  * the first entry whose pathPrefix matches `pathname.startsWith(prefix)`.
  * Use an empty-string pathPrefix as the site-wide fallback (last entry only).
  *
- * Per-account scoping (May 2026):
- *   AW-994138570 tracks the groups sales phone (831-648-7236) on
- *     /team-building-monterey only.
- *   AW-18137623591 tracks the reservations phone (831-372-1807) on the
- *     5 reservations LPs + homepage.
- *   Each phone click fires exactly one named conversion in exactly one
- *     account — no dual-fire.
+ * Per-page scoping (June 2026):
+ *   AW-18137623591 tracks both the groups sales phone (831-648-7236) on
+ *     /team-building-monterey and the reservations phone (831-372-1807)
+ *     on the 5 reservations LPs + homepage. Single-account funnel.
  */
 const CONVERSIONS: ReadonlyArray<{
   pathPrefix: string;
@@ -91,14 +88,10 @@ const CONVERSIONS: ReadonlyArray<{
 }> = [
   {
     // Groups / team-building LP — high-value phone + form, no FareHarbor.
-    // Consolidated to AW-18137623591 alongside the reservations conversions
-    // so the entire ABTS funnel reports in one account. AW-994138570 group
-    // phone/form conversions in the old account should be archived.
     pathPrefix: '/team-building-monterey',
     conversions: {
       phone: {
         kind: 'send_to',
-        accountId: GADS_ID_SECONDARY,
         label: 'a44MCJr2_rYcEKfY2MhD', // "Click to call - Groups LP" in AW-18137623591
         value: 1500,
       },
@@ -109,15 +102,14 @@ const CONVERSIONS: ReadonlyArray<{
       },
     },
   },
-  // Sitewide fallback — phone clicks on the 5 reservations LPs route to the
-  // new AW-18137623591 account. Team-building matches first above and is not
-  // affected. Lead value $50 (cruiser/kayak floor AOV assumption).
+  // Sitewide fallback — phone clicks on the 5 reservations LPs. Team-building
+  // matches first above and is not affected. Lead value $50 (cruiser/kayak
+  // floor AOV assumption).
   {
     pathPrefix: '',
     conversions: {
       phone: {
         kind: 'send_to',
-        accountId: GADS_ID_SECONDARY,
         label: '0274COCYkbUcEKfY2MhD',
         value: 50,
       },
