@@ -78,6 +78,8 @@ const DATA: PillarPageProps = {
     primaryCta: 'Reserve Your E-Bike →',
     primaryCtaHref: FH.EBIKE_RENTAL,
     backgroundImage: '/ebike-hero-marina.jpg',
+    socialProof: '★★★★★  600+ Reviews  ·  Google & TripAdvisor  ·  #1 Outdoor Activity, Pacific Grove',
+    urgencyNote: 'Weekends and holidays book fast — reserve your spot early.',
   },
   trustBadges: [
     '⚡ Premium E-Bike Fleet',
@@ -144,6 +146,36 @@ const DATA: PillarPageProps = {
     'Pre-ride orientation',
     'Charged battery — full day range',
   ],
+  fleet: {
+    heading: 'Our E-Bike Fleet',
+    subheading:
+      "Three premium brands. All rear-hub 500W motors. We'll match you to the right bike at check-in.",
+    sharedSpec: '⚡ 500W rear-hub  ·  5 levels + throttle  ·  Max 280 lbs',
+    helpLine: "Not sure which bike is right for you? Call us — we'll help you pick:",
+    cards: [
+      {
+        brand: 'Rad Power Bikes',
+        icon: '🏔️',
+        title: 'Sport & Fat Tire Frames',
+        body:
+          "Our most popular fleet. Fat tires handle sand, gravel, and pavement equally well. Multiple frame sizes — best for riders 5'4\" and above who want a more active, confident feel.",
+      },
+      {
+        brand: 'Blix',
+        icon: '🚲',
+        title: 'Step-Thru Frame',
+        body:
+          'Low-step design — easiest to mount and dismount. Swept-back handlebars and an upright riding position make this the most comfortable option for casual riders, older guests, and anyone who values comfort over speed.',
+      },
+      {
+        brand: 'AIMA',
+        icon: '⚙️',
+        title: 'Performance Frame',
+        body:
+          'Built on all Bafang components — the same drivetrain trusted by e-bike enthusiasts worldwide. Smooth, responsive power delivery across all 5 assist levels. Great for riders who want a more connected, performance-oriented ride.',
+      },
+    ],
+  },
   midPageImage: {
     src: '/ebike-coastal-road.jpg',
     alt: 'Rider on an Adventures By The Sea e-bike along the Monterey coastal trail',
@@ -179,6 +211,12 @@ const DATA: PillarPageProps = {
       author: '— Karen S., Google Review',
     },
   ],
+  postReviewsCta: {
+    heading: 'Ready to Book?',
+    subheading: 'Most guests book within 24 hours of visiting this page.',
+    buttonLabel: 'Reserve Your E-Bike →',
+    buttonHref: FH.EBIKE_RENTAL,
+  },
   faqs: FAQS,
   faqHeading: 'E-Bike FAQ',
   upsellLines: [

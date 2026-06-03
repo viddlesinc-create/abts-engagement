@@ -19,6 +19,13 @@ export type Step = { num: number; title: string; body: string };
 export type Route = { name: string; meta: string; body: string; chip?: string };
 export type Review = { stars: number; text: string; author: string };
 
+export type FleetCard = {
+  brand: string;
+  icon: string;
+  title: string;
+  body: string;
+};
+
 export type PillarPageProps = {
   hero: {
     eyebrow?: string;
@@ -28,6 +35,8 @@ export type PillarPageProps = {
     primaryCta: string;
     primaryCtaHref: string;
     backgroundImage: string;
+    socialProof?: string;
+    urgencyNote?: string;
   };
   trustBadges: string[];
   howItWorks: Step[];
@@ -35,10 +44,23 @@ export type PillarPageProps = {
   ladderHeading?: string;
   ladderSubheading?: string;
   included: string[];
+  fleet?: {
+    heading: string;
+    subheading: string;
+    cards: FleetCard[];
+    sharedSpec: string;
+    helpLine?: string;
+  };
   routes?: Route[];
   routesHeading?: string;
   midPageImage?: { src: string; alt: string };
   reviews: Review[];
+  postReviewsCta?: {
+    heading: string;
+    subheading: string;
+    buttonLabel: string;
+    buttonHref: string;
+  };
   faqs: Faq[];
   faqHeading: string;
   upsellLines: string[];
@@ -72,6 +94,9 @@ export function PillarPage({ data }: { data: PillarPageProps }) {
             <h1 className="mt-3 text-4xl font-extrabold leading-tight md:text-5xl">
               {data.hero.title}
             </h1>
+            {data.hero.socialProof ? (
+              <p className="mt-4 text-sm text-sand/90">{data.hero.socialProof}</p>
+            ) : null}
             <p className="mx-auto mt-5 max-w-2xl text-base/relaxed text-sand/90 md:text-lg">
               {data.hero.subtitle}
             </p>
@@ -86,6 +111,11 @@ export function PillarPage({ data }: { data: PillarPageProps }) {
               >
                 {data.hero.primaryCta}
               </a>
+              {data.hero.urgencyNote ? (
+                <p className="mt-3 text-[13px] italic text-sand/75">
+                  {data.hero.urgencyNote}
+                </p>
+              ) : null}
             </div>
             <p className="mt-5 text-sm text-sand/85">
               📞{' '}
@@ -208,6 +238,60 @@ export function PillarPage({ data }: { data: PillarPageProps }) {
           </div>
         </section>
 
+        {/* FLEET */}
+        {data.fleet ? (
+          <section
+            className="bg-sand/40 py-16"
+            aria-label={data.fleet.heading}
+          >
+            <div className="mx-auto max-w-5xl px-6">
+              <h2 className="text-3xl font-extrabold text-coast-900 md:text-4xl">
+                {data.fleet.heading}
+              </h2>
+              <p className="mt-3 max-w-prose text-ink/70">
+                {data.fleet.subheading}
+              </p>
+              <div className="mt-10 grid gap-6 md:grid-cols-3">
+                {data.fleet.cards.map((c) => (
+                  <article
+                    key={c.brand}
+                    className="rounded-2xl border border-ink/10 bg-white p-6"
+                  >
+                    <span className="inline-block rounded-full bg-coast px-2 py-0.5 text-xs font-semibold uppercase text-sand">
+                      {c.brand}
+                    </span>
+                    <div
+                      className="mt-4 text-3xl text-sunset"
+                      aria-hidden
+                    >
+                      {c.icon}
+                    </div>
+                    <h3 className="mt-2 text-lg font-bold text-coast-900">
+                      {c.title}
+                    </h3>
+                    <p className="mt-3 text-sm text-ink/70">{c.body}</p>
+                    <p className="mt-5 border-t border-ink/10 pt-3 text-xs text-ink/60">
+                      {data.fleet!.sharedSpec}
+                    </p>
+                  </article>
+                ))}
+              </div>
+              {data.fleet.helpLine ? (
+                <p className="mt-8 text-center text-sm text-ink/70">
+                  {data.fleet.helpLine}{' '}
+                  <a
+                    href={`tel:${CLIENT_PROFILE.contact.mainPhone}`}
+                    data-intent="phone"
+                    className="font-semibold text-coast underline-offset-2 hover:underline"
+                  >
+                    {CLIENT_PROFILE.contact.mainPhoneDisplay}
+                  </a>
+                </p>
+              ) : null}
+            </div>
+          </section>
+        ) : null}
+
         {/* MID-PAGE PHOTO */}
         {data.midPageImage ? (
           <section className="overflow-hidden">
@@ -290,6 +374,41 @@ export function PillarPage({ data }: { data: PillarPageProps }) {
             </div>
           </div>
         </section>
+
+        {/* POST-REVIEWS CTA */}
+        {data.postReviewsCta ? (
+          <section
+            className="bg-coast-900 py-12 text-center text-sand"
+            aria-label={data.postReviewsCta.heading}
+          >
+            <div className="mx-auto max-w-2xl px-6">
+              <h2 className="text-2xl font-extrabold md:text-3xl">
+                {data.postReviewsCta.heading}
+              </h2>
+              <p className="mt-3 text-sand/85">
+                {data.postReviewsCta.subheading}
+              </p>
+              <a
+                href={data.postReviewsCta.buttonHref}
+                data-intent="upgrade"
+                className="mt-5 inline-block rounded-lg bg-sunset px-7 py-3.5 font-bold text-white transition-transform hover:-translate-y-0.5 hover:bg-sunset-900"
+              >
+                {data.postReviewsCta.buttonLabel}
+              </a>
+              <p className="mt-4 text-sm text-sand/75">
+                Or call{' '}
+                <a
+                  href={`tel:${CLIENT_PROFILE.contact.mainPhone}`}
+                  data-intent="phone"
+                  className="font-semibold underline-offset-2 hover:underline"
+                >
+                  {CLIENT_PROFILE.contact.mainPhoneDisplay}
+                </a>{' '}
+                to book by phone.
+              </p>
+            </div>
+          </section>
+        ) : null}
 
         {/* FAQ */}
         <section className="bg-sand/40 py-16">
