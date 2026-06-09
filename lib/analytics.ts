@@ -48,6 +48,11 @@ export const GADS_ID = process.env.NEXT_PUBLIC_GADS_ID ?? 'AW-18137623591';
 
 export type ConversionType = 'phone' | 'form' | 'booking';
 
+/** GA4 key event for the /team-building-monterey form submit. Mirrors the
+ *  `eventName` in the CONVERSIONS form entry — referenced by
+ *  GroupInquiryForm so the two cannot drift. */
+export const GROUPS_LP_FORM_EVENT = 'groups_lp_form_submit' as const;
+
 type ConversionConfig =
   | {
       /** Legacy style — fires `gtag('event', 'conversion', { send_to, ... })`. */
@@ -97,7 +102,7 @@ const CONVERSIONS: ReadonlyArray<{
       },
       form: {
         kind: 'event',
-        eventName: 'groups_lp_form_submit',
+        eventName: GROUPS_LP_FORM_EVENT,
         value: 1500,
       },
     },

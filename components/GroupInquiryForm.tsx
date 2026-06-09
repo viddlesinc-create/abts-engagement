@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { CLIENT_PROFILE } from '@/lib/client-profile';
-import { trackConversion } from '@/lib/analytics';
+import { trackConversion, GROUPS_LP_FORM_EVENT } from '@/lib/analytics';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
@@ -20,12 +20,14 @@ export function GroupInquiryForm() {
 
     setStatus('sending');
 
-    // Fires Google Ads conversion + GA4 groups_form_submit event.
-    // type:'form' routes to the team-building-monterey form-submit label
-    // configured in lib/analytics.ts CONVERSIONS map.
+    // Fires Google Ads conversion + GA4 GROUPS_LP_FORM_EVENT
+    // (groups_lp_form_submit). type:'form' routes to the
+    // team-building-monterey form-submit label configured in
+    // lib/analytics.ts CONVERSIONS map. The GA4 event name is sourced from
+    // the same constant the CONVERSIONS map uses, so the two cannot drift.
     trackConversion({
       type: 'form',
-      ga4Event: 'groups_form_submit',
+      ga4Event: GROUPS_LP_FORM_EVENT,
       ga4Params: {
         event_category: 'Group Inquiry',
         event_label: String(data.get('Activity Interest') ?? ''),
