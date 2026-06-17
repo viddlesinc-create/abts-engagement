@@ -5,6 +5,7 @@ import { CLIENT_PROFILE } from '@/lib/client-profile';
 import { brandLocalBusinessSchema, jsonLdScript } from '@/lib/schema';
 import { GA4_ID, GADS_ID } from '@/lib/analytics';
 import { ConversionTracker } from '@/components/ConversionTracker';
+import { FareHarborLightbox } from '@/components/FareHarborLightbox';
 import './globals.css';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bookadventuresbythesea.com';
@@ -71,20 +72,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         ) : null}
         {/*
-          FareHarbor Embed API (autolightbox). Loaded globally so it persists
-          across client route transitions; it binds a delegated click listener
-          that intercepts any <a href="https://fareharbor.com/embeds/book/...">
-          and opens the booking in a LIGHTBOX overlay instead of navigating the
-          top window. Keeping the user on bookadventuresbythesea.com preserves
-          the GA4 session + gclid for paid-booking attribution.
+          FareHarbor Embed API. Loaded globally so window.FH (with FH.open)
+          is available on every page and persists across client route
+          transitions.
+
+          NOTE: we intentionally do NOT use `?autolightbox=yes`. FareHarbor's
+          autolightbox runs a GA4 cross-domain stitch (g4=yes → getGA4ClientIds)
+          that throws on this site's gtag setup (the GA4 tag G-W2QRVH1SY8 isn't
+          registered in window.google_tag_manager the way FH expects, only the
+          AW- Ads tag is), which aborts the overlay open. Instead, the booking
+          overlay is opened explicitly via FH.open() in <FareHarborLightbox />,
+          which bypasses that broken handshake. Either way the top URL stays on
+          bookadventuresbythesea.com, preserving the GA4 session + gclid.
         */}
         <Script
-          src="https://fareharbor.com/embeds/api/v1/?autolightbox=yes"
+          src="https://fareharbor.com/embeds/api/v1/"
           strategy="afterInteractive"
         />
       </head>
       <body className="min-h-screen flex flex-col">
         <ConversionTracker />
+        <FareHarborLightbox />
         {children}
         {GA4_ID ? <GoogleAnalytics gaId={GA4_ID} /> : null}
       </body>

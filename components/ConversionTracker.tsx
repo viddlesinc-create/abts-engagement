@@ -11,10 +11,11 @@ import { trackConversion } from '@/lib/analytics';
  *
  *   1. A FareHarbor booking link — `<a href="https://fareharbor.com/embeds/book/...">`
  *      OR any link tagged with `data-fh-book`. We do NOT preventDefault or
- *      navigate for these — the FareHarbor Embed API (autolightbox, loaded in
- *      app/layout.tsx) intercepts the same click and opens the booking in a
- *      lightbox overlay, keeping the user on this domain so the GA4 session +
- *      gclid survive. We only fire the GA4 engagement event here.
+ *      navigate for these — <FareHarborLightbox /> (bubble phase) opens the
+ *      booking in a lightbox overlay via FH.open(), keeping the user on this
+ *      domain so the GA4 session + gclid survive. This listener runs in the
+ *      CAPTURE phase, so the GA4 engagement event fires BEFORE the overlay
+ *      opens. We only fire the GA4 event here.
  *      NOTE: this is a GA4 engagement event (`fareharbor_click`) only — the
  *      real Google Ads "Booking Complete" conversion is fired by FareHarbor
  *      itself when checkout completes, via the `google-conversion-id` and

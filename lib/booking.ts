@@ -11,9 +11,15 @@ const QS = '?full-items=yes';
 // itself is only a GA4 engagement event (see components/ConversionTracker.tsx);
 // the real Ads conversion is owned by FH.
 // NOTE: output: 'export' bakes env vars at build time, so we ship defaults here
-// (same pattern as GA4_ID/GADS_ID in lib/analytics.ts). Override via env if needed.
-const FH_CONV_ID = process.env.NEXT_PUBLIC_FH_CONV_ID ?? 'AW-18137623591';
-const FH_CONV_LABEL = process.env.NEXT_PUBLIC_FH_CONV_LABEL ?? 'oTDhCPXG2rYcEKfY2MhD';
+// (same pattern as GA4_ID/GADS_ID in lib/analytics.ts). We use `||` (not `??`)
+// on purpose: Netlify defines these keys as EMPTY strings, and `??` would let
+// "" through, blanking the params. `||` falls back to the defaults below.
+// FareHarbor's google-conversion-id expects the BARE NUMERIC Ads ID (digits
+// only — no "AW-" prefix). These params only matter for the no-JS fallback
+// (native nav to the full FH page); in the lightbox path the booking conversion
+// is best tracked via GA4 → Google Ads import. Verify with a real test booking.
+const FH_CONV_ID = process.env.NEXT_PUBLIC_FH_CONV_ID || '18137623591';
+const FH_CONV_LABEL = process.env.NEXT_PUBLIC_FH_CONV_LABEL || 'oTDhCPXG2rYcEKfY2MhD';
 const GA =
   FH_CONV_ID && FH_CONV_LABEL
     ? `&google-conversion-id=${FH_CONV_ID}&google-conversion-label=${FH_CONV_LABEL}`
