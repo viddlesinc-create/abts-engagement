@@ -70,6 +70,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Script>
           </>
         ) : null}
+        {/*
+          FareHarbor Embed API (autolightbox). Loaded globally so it persists
+          across client route transitions; it binds a delegated click listener
+          that intercepts any <a href="https://fareharbor.com/embeds/book/...">
+          and opens the booking in a LIGHTBOX overlay instead of navigating the
+          top window. Keeping the user on bookadventuresbythesea.com preserves
+          the GA4 session + gclid for paid-booking attribution.
+        */}
+        <Script
+          src="https://fareharbor.com/embeds/api/v1/?autolightbox=yes"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="min-h-screen flex flex-col">
         <ConversionTracker />

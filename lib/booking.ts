@@ -10,8 +10,10 @@ const QS = '?full-items=yes';
 // inside the FH widget, by reading these params off the embed URL. The click
 // itself is only a GA4 engagement event (see components/ConversionTracker.tsx);
 // the real Ads conversion is owned by FH.
-const FH_CONV_ID = process.env.NEXT_PUBLIC_FH_CONV_ID ?? '';
-const FH_CONV_LABEL = process.env.NEXT_PUBLIC_FH_CONV_LABEL ?? '';
+// NOTE: output: 'export' bakes env vars at build time, so we ship defaults here
+// (same pattern as GA4_ID/GADS_ID in lib/analytics.ts). Override via env if needed.
+const FH_CONV_ID = process.env.NEXT_PUBLIC_FH_CONV_ID ?? 'AW-18137623591';
+const FH_CONV_LABEL = process.env.NEXT_PUBLIC_FH_CONV_LABEL ?? 'oTDhCPXG2rYcEKfY2MhD';
 const GA =
   FH_CONV_ID && FH_CONV_LABEL
     ? `&google-conversion-id=${FH_CONV_ID}&google-conversion-label=${FH_CONV_LABEL}`
