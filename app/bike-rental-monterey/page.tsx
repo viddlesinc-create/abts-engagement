@@ -169,7 +169,7 @@ const DATA: PillarPageProps = {
   upsellLines: [
     'Upgrade to e-bike ($40 / 2 hours)',
     'Book the guided 17 Mile Drive tour ($75/person)',
-    'Upgrade to a half day (+$20)',
+    'Going further? Book the half day instead ($45)',
   ],
   finalCta: {
     title: 'Book Your Monterey Bike Rental',
