@@ -51,7 +51,7 @@ const PILLARS: Pillar[] = [
     href: '/surrey-bike-rental-monterey/',
     title: 'Surrey Bike Rental Monterey',
     sub: '3- and 6-person surreys · Portola Hotel + Cannery Row pickup.',
-    priceLine: 'From $36/hr',
+    priceLine: 'From $75 / 2 hours',
     ladderLine: 'Pair with e-bikes for the adults — split the family across both.',
     cta: 'Book a surrey',
   },
