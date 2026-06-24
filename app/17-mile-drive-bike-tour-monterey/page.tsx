@@ -103,8 +103,8 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: 'Self-Guided E-Bike',
-      subtitle: 'Rent the e-bike, get the route map, ride at your own pace. $35 / 2 hours · $60 / 4 hours.',
-      price: '$35',
+      subtitle: 'Rent the e-bike, get the route map, ride at your own pace. $40 / 2 hours · $60 / 4 hours.',
+      price: '$40',
       priceUnit: '/ 2 hours',
       best: 'Best for: Confident riders who want full schedule control.',
       cta: 'Book Self-Guided →',

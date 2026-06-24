@@ -16,7 +16,7 @@ const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
 export const metadata: Metadata = {
   title: 'Electric Bike Rentals in Monterey',
   description:
-    'Premium e-bike rentals in Monterey — Rad Power Bikes, Blix, AIMA. Tackle the 17 Mile Drive effortlessly. From $35 / 2 hours. Book online.',
+    'Premium e-bike rentals in Monterey — Rad Power Bikes, Blix, AIMA. Tackle the 17 Mile Drive effortlessly. From $40 / 2 hours. Book online.',
   alternates: { canonical: PAGE_PATH },
 };
 
@@ -74,7 +74,7 @@ const DATA: PillarPageProps = {
     title: 'Electric Bike Rentals in Monterey — Ride Farther, Explore More',
     subtitle:
       "Premium e-bikes that make the Monterey Peninsula's hills effortless. The 17 Mile Drive, Pacific Grove, and the coastal Recreation Trail — all within reach.",
-    pricePill: 'From $35 / 2 hours',
+    pricePill: 'From $40 / 2 hours',
     primaryCta: 'Reserve Your E-Bike →',
     primaryCtaHref: FH.EBIKE_RENTAL,
     backgroundImage: '/ebike-hero-marina.jpg',
@@ -110,8 +110,8 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: 'E-Bike Rental — Self-Guided',
-      subtitle: 'You choose the route. We give you the bike, map, and orientation. $35 / 2 hours · $60 / 4 hours.',
-      price: '$35',
+      subtitle: 'You choose the route. We give you the bike, map, and orientation. $40 / 2 hours · $60 / 4 hours.',
+      price: '$40',
       priceUnit: '/ 2 hours',
       best: 'Best for confident explorers who know what they want to see.',
       cta: 'Book Self-Guided →',
@@ -242,7 +242,7 @@ export default function ElectricBikeRentalMontereyPage() {
       serviceType: 'Electric Bike Rental',
       description:
         'Premium e-bikes (Rad Power, Blix, AIMA) with 500W motors and 5 levels of pedal-assist. Pickup at Cannery Row, Monterey.',
-      priceFloor: 35,
+      priceFloor: 40,
       priceUnit: 'per 2 hours',
     }),
     faqPageSchema(FAQS),

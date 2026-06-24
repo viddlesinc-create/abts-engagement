@@ -36,14 +36,14 @@ const PILLARS: Pillar[] = [
     title: 'Bike Rental Monterey',
     sub: '6 pickup locations · cruisers, hybrids, family bikes — by the hour or day.',
     priceLine: 'From $13/hr',
-    ladderLine: 'Climb hills effortlessly — upgrade to e-bike from $35 / 2 hours.',
+    ladderLine: 'Climb hills effortlessly — upgrade to e-bike from $40 / 2 hours.',
     cta: 'Browse bikes',
   },
   {
     href: '/electric-bike-rental-monterey/',
     title: 'Electric Bike Rental Monterey',
     sub: '500W e-bikes · 5 levels of pedal-assist + throttle. Riders 13+.',
-    priceLine: 'From $35 / 2 hours',
+    priceLine: 'From $40 / 2 hours',
     ladderLine: 'Best for 17-Mile Drive — book the guided e-bike tour from $75/person.',
     cta: 'See e-bike fleet',
   },
@@ -81,7 +81,7 @@ const PILLARS: Pillar[] = [
 
 const LADDER = [
   { rung: '1', label: 'Cruiser / Hybrid', price: '$13/hr' },
-  { rung: '2', label: 'E-Bike (500W, 5 PAS)', price: '$35 / 2 hours' },
+  { rung: '2', label: 'E-Bike (500W, 5 PAS)', price: '$40 / 2 hours' },
   { rung: '3', label: '17-Mile Drive E-Bike Tour', price: '$75/person' },
 ];
 

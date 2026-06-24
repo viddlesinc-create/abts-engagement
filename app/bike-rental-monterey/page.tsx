@@ -103,7 +103,7 @@ const DATA: PillarPageProps = {
     {
       name: 'Electric Bike Rental',
       subtitle: 'Pedal-assist motor. Go twice as far. Handle any hill.',
-      price: '$35',
+      price: '$40',
       priceUnit: '/ 2 hours',
       best: 'Most guests choose this. Best for 17 Mile Drive, mixed-ability groups.',
       cta: 'Reserve E-Bike — Most Popular →',
@@ -167,7 +167,7 @@ const DATA: PillarPageProps = {
   faqs: FAQS,
   faqHeading: 'Bike Rental FAQ',
   upsellLines: [
-    'Upgrade to e-bike ($35 / 2 hours)',
+    'Upgrade to e-bike ($40 / 2 hours)',
     'Book the guided 17 Mile Drive tour ($75/person)',
     'Add an extra hour (+$13)',
   ],
