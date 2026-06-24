@@ -103,7 +103,7 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: 'Self-Guided E-Bike',
-      subtitle: 'Rent the e-bike, get the route map, ride at your own pace. $40 / 2 hours · $60 / 4 hours.',
+      subtitle: 'Rent the e-bike, get the route map, ride at your own pace. $40 / 2 hours · $60 / 4 hours · $80 all day.',
       price: '$40',
       priceUnit: '/ 2 hours',
       best: 'Best for: Confident riders who want full schedule control.',
@@ -179,7 +179,7 @@ const DATA: PillarPageProps = {
   faqs: FAQS,
   faqHeading: '17 Mile Drive Bike Tour FAQ',
   upsellLines: [
-    'Add an extra hour of self-guided riding after the tour',
+    'Add a self-guided e-bike rental afterward ($40 / 2 hours)',
     'Upgrade to private group tour — call for pricing',
     'Combine with a Pebble Beach kayak tour ($85/person)',
   ],
