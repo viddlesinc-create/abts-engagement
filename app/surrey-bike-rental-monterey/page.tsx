@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title:
     'Surrey Bike Rental Monterey | 3 & 6 Person Surreys at Portola Hotel + Cannery Row',
   description:
-    'Rent a 3-person or 6-person surrey bike on the Monterey Peninsula. Pick up at Portola Hotel or Cannery Row. The whole family in one ride. From $75 / 2 hours.',
+    'Rent a 3-person or 6-person surrey bike on the Monterey Peninsula. Pick up at Portola Hotel or Cannery Row. The whole family in one ride. From $72 / 2 hours.',
   alternates: { canonical: PAGE_PATH },
 };
 
@@ -62,7 +62,7 @@ const DATA: PillarPageProps = {
     title: 'Surrey Bike Rentals in Monterey — The Whole Family in One Ride',
     subtitle:
       "3-person and 6-person surreys. Everyone pedals (or doesn't). All ages, all fitness levels. The Recreation Trail and Monterey coast in one shared experience.",
-    pricePill: 'From $75 / 2 hours',
+    pricePill: 'From $72 / 2 hours',
     primaryCta: 'Reserve a Surrey →',
     primaryCtaHref: FH.SURREY,
     backgroundImage:
@@ -95,8 +95,8 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: '3-Person Surrey',
-      subtitle: 'Seats 3 adults or 2 adults + 2 kids in baskets. Two adults pedal up front. $75 / 2 hours · $112.50 half-day · $225 full-day.',
-      price: '$75',
+      subtitle: 'Seats 3 adults or 2 adults + 2 kids in baskets. Two adults pedal up front. $72 / 2 hours · $108 half-day · $216 full-day.',
+      price: '$72',
       priceUnit: '/ 2 hours',
       best: 'Best for: Couples + 1 child, or 3 adults sharing the ride.',
       cta: 'Book 3-Person →',
@@ -104,8 +104,8 @@ const DATA: PillarPageProps = {
     },
     {
       name: '6-Person Surrey',
-      subtitle: 'Seats 6 adults or up to 6 adults + 2 kids in baskets. Two adults pedal, the rest ride in back. $95 / 2 hours · $143 half-day · $287 full-day.',
-      price: '$95',
+      subtitle: 'Seats 6 adults or up to 6 adults + 2 kids in baskets. Two adults pedal, the rest ride in back. $92 / 2 hours · $138 half-day · $276 full-day.',
+      price: '$92',
       priceUnit: '/ 2 hours',
       best: 'Best for: Families of 4–6, multi-generational groups.',
       cta: 'Book 6-Person →',
@@ -168,9 +168,9 @@ const DATA: PillarPageProps = {
   faqs: FAQS,
   faqHeading: 'Surrey Rental FAQ',
   upsellLines: [
-    'Add an extra hour ($36)',
-    'Add a regular bike for the older kid (+$13/hr)',
-    'Book a guided photo session along the route',
+    'Upgrade to the 6-person surrey ($92 / 2 hours)',
+    'Extend to a half day ($108 small · $138 large)',
+    'Add a guided 17 Mile Drive e-bike tour ($75/person)',
   ],
   finalCta: {
     title: 'Reserve Your Family Surrey',
@@ -190,7 +190,7 @@ export default function SurreyBikeRentalMontereyPage() {
       serviceType: 'Surrey Bike Rental',
       description:
         '3-person and 6-person surreys for families. Pickup at Portola Hotel and Cannery Row, Monterey.',
-      priceFloor: 75,
+      priceFloor: 72,
       priceUnit: 'per 2 hours',
     }),
     faqPageSchema(FAQS),
