@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 /**
  * Opens FareHarbor bookings in a lightbox overlay via the FareHarbor Embed
@@ -34,6 +35,14 @@ type FhOpenOptions = {
   fallback: 'simple';
   fullItems: string;
   flow?: number;
+  /**
+   * Online booking reference tagged onto bookings that complete inside the FH
+   * widget (FH.open's documented `ref` option). We set it to `<slug>:<intent>`
+   * so every completed booking carries its source page + CTA intent in the
+   * FareHarbor dashboard — closing the attribution loop on the FH side (GA4
+   * already has the click via <ConversionTracker />).
+   */
+  ref?: string;
   view: { item: number };
 };
 
@@ -72,7 +81,36 @@ function parseFareHarborHref(href: string): FhOpenOptions | null {
   };
 }
 
+/**
+ * Build the FH `ref` from the current page slug + the clicked CTA's intent.
+ * Examples: "bike-rentals-monterey:upgrade", "kayak-tours-monterey-bay:cta".
+ * utm_content (if present on the page URL) wins over the slug so paid clicks
+ * carry the ad's content tag straight through to the completed booking.
+ */
+function buildBookingRef(anchor: HTMLAnchorElement): string | undefined {
+  if (typeof window === 'undefined') return undefined;
+  const slug = window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
+  let source = slug;
+  try {
+    const utmContent = new URL(window.location.href).searchParams.get('utm_content');
+    if (utmContent) source = utmContent;
+  } catch {
+    // malformed location — fall back to slug
+  }
+  const intent = anchor.dataset.intent ?? 'cta';
+  return `${source}:${intent}`;
+}
+
 export function FareHarborLightbox(): null {
+  const pathname = usePathname();
+
+  // Close any open overlay when the SPA navigates to a new route, so it can't
+  // linger over a page it no longer belongs to. FH.close() is a no-op (returns
+  // false) when nothing is open. Documented in the Advanced Lightframe API.
+  useEffect(() => {
+    window.FH?.close?.();
+  }, [pathname]);
+
   useEffect(() => {
     function handleClick(e: MouseEvent): void {
       // Let the browser handle modified clicks (new tab/window) natively.
@@ -93,6 +131,9 @@ export function FareHarborLightbox(): null {
 
       const opts = parseFareHarborHref(href);
       if (!opts) return;
+
+      const ref = buildBookingRef(anchor);
+      if (ref) opts.ref = ref;
 
       e.preventDefault();
       window.FH.open(opts);
