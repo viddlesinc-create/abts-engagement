@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { trackConversion } from '@/lib/analytics';
+import { captureClickId } from '@/lib/click-id';
 
 /**
  * Global click-delegation conversion tracker.
@@ -32,6 +33,14 @@ import { trackConversion } from '@/lib/analytics';
  * this file — just use the URL pattern or data attribute above.
  */
 export function ConversionTracker(): null {
+  // Capture the Google click ID (gclid/gbraid/wbraid) on landing and persist it
+  // for 90 days, so the booking handler can carry it into FareHarbor's `ref` for
+  // offline conversion attribution. Mounted once at app root, so this runs on the
+  // first (landing) page load — before any booking click. See lib/click-id.ts.
+  useEffect(() => {
+    captureClickId();
+  }, []);
+
   useEffect(() => {
     function handleClick(e: MouseEvent): void {
       const t = e.target;
