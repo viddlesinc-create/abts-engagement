@@ -4,10 +4,14 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { getClickId, hasTrackingConsent, type ClickIdType } from '@/lib/click-id';
 
-/** Hard cap on the `ref` we send FareHarbor. The click ID leads (see
- *  buildBookingRef), so if FareHarbor truncates its stored reference only the
- *  less-important `source:intent` tail is lost, never the click ID. */
-const MAX_REF_LEN = 120;
+/** Soft budget for the `ref` we send FareHarbor. Only the `source:intent` TAIL is
+ *  ever trimmed to fit this — buildBookingRef guarantees the click-ID prefix is
+ *  never clipped (a clipped click ID is an unmatchable booking). Set generously
+ *  (well above a normal gclid ~100 + prefix) so OUR cap never becomes the binding
+ *  constraint — that way any truncation seen in the FareHarbor dashboard is
+ *  unambiguously FareHarbor's own limit, which is exactly what the validation
+ *  gate measures. Must stay >= MAX_VALUE_LEN (200, lib/click-id.ts) + prefix. */
+const MAX_REF_LEN = 240;
 
 /** Mode A/B switch (Fix B plan). Mode A (false) = raw click ID in `ref`. Flip to
  *  Mode B only if the validation gate shows FareHarbor truncates the full click
@@ -137,8 +141,15 @@ function buildBookingRef(anchor: HTMLAnchorElement): string | undefined {
   // short server-resolved token; not built until the validation gate proves
   // FareHarbor truncates the raw value (and it needs a Netlify Function).
   const value = USE_TOKEN ? click.id : click.id;
-  const combined = `${TYPE_CODE[click.type]}.${value}~${base}`;
-  return combined.slice(0, MAX_REF_LEN);
+
+  // The click-ID prefix (type code + value) is NEVER truncated — a clipped click
+  // ID can't be matched back to the ad click, so it must survive whole. Only the
+  // `~<base>` tail is trimmed to fit MAX_REF_LEN.
+  const prefix = `${TYPE_CODE[click.type]}.${value}`;
+  const full = `${prefix}~${base}`;
+  if (full.length <= MAX_REF_LEN) return full;
+  if (prefix.length >= MAX_REF_LEN) return prefix; // pathological-length click ID — send it whole, drop the tail
+  return full.slice(0, MAX_REF_LEN); // whole prefix + as much of the base tail as fits
 }
 
 export function FareHarborLightbox(): null {
