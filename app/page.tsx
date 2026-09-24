@@ -35,7 +35,7 @@ const PILLARS: Pillar[] = [
     href: '/bike-rental-monterey/',
     title: 'Bike Rental Monterey',
     sub: '6 pickup locations · cruisers, hybrids, family bikes — 2-hour, half-day & full-day blocks.',
-    priceLine: 'From $25 / 2 hours',
+    priceLine: 'From $26 / 2 hours',
     ladderLine: 'Climb hills effortlessly — upgrade to e-bike from $40 / 2 hours.',
     cta: 'Browse bikes',
   },
@@ -80,7 +80,7 @@ const PILLARS: Pillar[] = [
 ];
 
 const LADDER = [
-  { rung: '1', label: 'Cruiser / Hybrid', price: '$25 / 2 hours' },
+  { rung: '1', label: 'Cruiser / Hybrid', price: '$26 / 2 hours' },
   { rung: '2', label: 'E-Bike (500W, 5 PAS)', price: '$40 / 2 hours' },
   { rung: '3', label: '17-Mile Drive E-Bike Tour', price: '$75/person' },
 ];

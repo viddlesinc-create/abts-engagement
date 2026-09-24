@@ -58,7 +58,7 @@ const DATA: PillarPageProps = {
     title: 'Monterey Bike Rentals — Explore the Coast Your Way',
     subtitle:
       'Beach cruisers, hybrids, e-bikes, and family bikes available in 2-hour, half-day, or full-day rentals. Easy pickup near Cannery Row.',
-    pricePill: 'From $25 / 2 hours',
+    pricePill: 'From $26 / 2 hours',
     primaryCta: 'Reserve Your Bike →',
     primaryCtaHref: FH.TRAD_BIKE,
     backgroundImage:
@@ -93,8 +93,8 @@ const DATA: PillarPageProps = {
   ladder: [
     {
       name: 'Classic Bike Rental',
-      subtitle: 'Beach cruiser or hybrid. $25 / 2 hours · $45 / half day · $55 / full day.',
-      price: '$25',
+      subtitle: 'Beach cruiser or hybrid. $26 / 2 hours · $45 / half day · $55 / full day.',
+      price: '$26',
       priceUnit: '/ 2 hours',
       best: 'Best for: Easy riders, short distances, flat terrain.',
       cta: 'Book Classic →',
@@ -189,7 +189,7 @@ export default function BikeRentalMontereyPage() {
       serviceType: 'Bike Rental',
       description:
         'Beach cruisers, hybrids, e-bikes, and family bikes by the hour or day. Pickup at Cannery Row, Monterey.',
-      priceFloor: 25,
+      priceFloor: 26,
       priceUnit: 'per 2 hours',
     }),
     faqPageSchema(FAQS),
