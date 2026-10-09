@@ -29,7 +29,7 @@ const FAQS: Faq[] = [
   {
     question: 'How far can I ride on a single battery charge?',
     answer:
-      'Our fleet (Rad Power Bikes, Blix, and AIMA with 500W Bafang motors) delivers a 30–40 mile range per charge — more than enough for the full 17 Mile Drive or a day of coastal riding.',
+      'Our fleet (Rad Power Bikes, Blix, and AIMA) delivers a 30–40 mile range per charge — more than enough for the full 17 Mile Drive or a day of coastal riding.',
   },
   {
     question: 'Can I ride the 17 Mile Drive on an e-bike?',
@@ -83,7 +83,7 @@ const DATA: PillarPageProps = {
   },
   trustBadges: [
     '⚡ Premium E-Bike Fleet',
-    '🔋 30–40 mile range',
+    '🔋 Full 17-Mile Drive on one charge',
     '👥 Riders 13+ on e-bikes',
     '✓ No Experience Needed',
   ],
@@ -139,7 +139,7 @@ const DATA: PillarPageProps = {
     },
   ],
   included: [
-    'Premium e-bike (500W motor, 5 assist levels)',
+    'Premium e-bike that makes every hill feel flat',
     'Helmet',
     'Bike lock',
     'Route map of Monterey + 17 Mile Drive',
@@ -149,8 +149,8 @@ const DATA: PillarPageProps = {
   fleet: {
     heading: 'Our E-Bike Fleet',
     subheading:
-      "Three premium brands. All rear-hub 500W motors. We'll match you to the right bike at check-in.",
-    sharedSpec: '⚡ 500W rear-hub  ·  5 levels + throttle  ·  Max 280 lbs',
+      "Three premium brands, all built for easy pedaling along the coast. We'll match you to the right bike at check-in.",
+    sharedSpec: '⚡ Cruise 17-Mile Drive easily  ·  Max 280 lbs',
     helpLine: "Not sure which bike is right for you? Call us — we'll help you pick:",
     cards: [
       {
@@ -172,7 +172,7 @@ const DATA: PillarPageProps = {
         icon: '⚙️',
         title: 'Performance Frame',
         body:
-          'Built on all Bafang components — the same drivetrain trusted by e-bike enthusiasts worldwide. Smooth, responsive power delivery across all 5 assist levels. Great for riders who want a more connected, performance-oriented ride.',
+          'Built on all Bafang components — the same drivetrain trusted by e-bike enthusiasts worldwide. Smooth, responsive help on every climb, so you ride without the burn. Great for riders who want a more connected, performance-oriented ride.',
       },
     ],
   },
@@ -241,7 +241,7 @@ export default function ElectricBikeRentalMontereyPage() {
       pageUrl: PAGE_URL,
       serviceType: 'Electric Bike Rental',
       description:
-        'Premium e-bikes (Rad Power, Blix, AIMA) with 500W motors and 5 levels of pedal-assist. Pickup at Cannery Row, Monterey.',
+        'Premium e-bikes (Rad Power, Blix, AIMA) that make 17-Mile Drive easy, with every hill feeling flat. Pickup at Cannery Row, Monterey.',
       priceFloor: 40,
       priceUnit: 'per 2 hours',
     }),
